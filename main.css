@@ -35,7 +35,7 @@ nav {
 }
 .toread{
 	Width:500px;
-	height: 100px;
+	height: 150px;
 	background-color:bisque;
 	border-radius: 25px;
 	float: right;
@@ -44,7 +44,7 @@ nav {
 }
 .read{
 	Width:500px;
-	height: 100px;
+	height: 150px;
 	background-color:beige;
 	border-radius: 25px;
 	float: right;
