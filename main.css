@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	box-sizing: border-box;
+	
+}
+body{
+	background-color:#FFC0CB;
+}
+#container{
+	width:800px;
+	height: 650px;
+	margin: 0 auto;
+	border: 3px double black;
+	
+}
+nav {
+	width:200px;
+	float:left;
+	height:350px;
+	font-family: "Bookman Old Style", "serif";
+	padding: 0px 10px 0px 10px;
+	background-color:oldlace;
+	
+}
+.reading{
+	Width:500px;
+	height: 150px;
+	background-color:beige;
+	border-radius: 25px;
+	float: right;
+	margin: 0px 10px 10px 15px;
+	padding: 0px 10px 0px 10px;
+
+}
+.toread{
+	Width:500px;
+	height: 100px;
+	background-color:bisque;
+	border-radius: 25px;
+	float: right;
+	margin: 0px 10px 10px 15px;
+	padding: 0px 10px 0px 10px;
+}
+.read{
+	Width:500px;
+	height: 100px;
+	background-color:beige;
+	border-radius: 25px;
+	float: right;
+	margin: 0px 10px 0px 15px;
+	padding: 0px 10px 0px 10px;
+}
+header > h1{
+	font-family: 'Brush Script MT', 'cursive';
+	text-align: center;
+}
+.reading>img{
+	margin: 0px 5px 0px 5px;
+}
+footer{
+	visibility: hidden;
+}
