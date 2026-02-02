@@ -23,6 +23,19 @@ nav {
 	background-color:oldlace;
 	
 }
+.btn{
+	background-color: #FFB6C1;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+	
+}
 .reading{
 	Width:500px;
 	height: 150px;
@@ -52,12 +65,32 @@ nav {
 	padding: 0px 10px 0px 10px;
 }
 header > h1{
-	font-family: 'Brush Script MT', 'cursive';
 	text-align: center;
 }
+.meddon-regular {
+  font-family: "Meddon", cursive;
+  font-weight: 400;
+  font-style: bold;
+}
+.lugrasimo-regular {
+  font-family: "Lugrasimo", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .reading>img{
 	margin: 0px 5px 0px 5px;
 }
 footer{
 	visibility: hidden;
+}
+
+.reading a:link{
+	text-decoration:none;
+}
+
+.btn:active{
+	transform: translateY(2px);
+  	box-shadow: 0 5px #666;
 }
