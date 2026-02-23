@@ -94,3 +94,21 @@ footer{
 	transform: translateY(2px);
   	box-shadow: 0 5px #666;
 }
+
+th, td {
+  padding: 10px;
+}
+
+.review {
+		 border-collapse: collapse;
+ 		 width: 100%;
+}
+.review>th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #090000;
+}
+
+p {
+	text-align: center;
+}
