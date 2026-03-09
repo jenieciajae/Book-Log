@@ -3,49 +3,109 @@
 <head>
 <meta charset="utf-8">
 <title>Book Log</title>
+
 <link rel="stylesheet" href="main.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Meddon&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 </head>
 <body>
-	<div id="container">
-	<header><h1 class="meddon-regular">Jeniecia's Book Log</h1></header>
-		<nav class="lugrasimo-regular">
-			<h2>My Books &#128366;</h2>
-			<button class="btn lugrasimo-regular" onclick="document.location='goals.html'">Goals</button>
-			<button class="btn lugrasimo-regular" onclick="document.location='reviews.html'">Reviews</button>
-			<button class="btn lugrasimo-regular" onclick="document.location='audiobook.html'">Audiobook</button>
-		</nav>
-		
-		<section>
-		<article class="reading lugrasimo-regular">
-			<h3>Reading:</h3>
-			<a href="https://www.barnesandnoble.com/w/white-nights-fyodor-dostoyevsky/1020605626?ean=9781804471616" title="Purchase White Nights" target="_blank">
-			<img src="images/whitenights.jpg" alt="white nights book" style="width:50px; height:80px;">
-			</a>
-		</article>
-			
-		<article class="toread lugrasimo-regular">
-			<h3>To Be Read:</h3>
-			<a href="https://www.amazon.com/Who-Have-Never-Known-Men-ebook/dp/B07L6XBVSQ" title="Purchase I Who Have Never Known Men" target="_blank">
-			<img src="images/Iwhnkm.jpg" alt="I Who Have Never Known Men book" style="width:50px; height:80px;">
-			</a>
-		</article>
-			
-		<article class="read lugrasimo-regular">
-			<h3>Read:</h3>
-			<a href="https://www.amazon.com/Men-Who-Hate-Women-misogyny/dp/1398504653" title="Purchase Men Who Hate Women" target="_blank">
-			<img src="images/mwhw.jpg" alt="Men who hate women book" style="width:50px; height:80px;">
-			</a>
-			<a href="https://www.amazon.com/Book-Lovers-Emily-Henry/dp/0593334833" title="Purchase Book Lovers" target="_blank">
-			<img src="images/booklovers.jpg" alt="Book Lovers book" style="width:50px; height:80px;">
-			</a>
-		</article>
-		</section>
-		
-	<footer>Copyright Jeniecia Williams</footer>
-	</div>
+<div id="container">
+<header>
+<h1 class="meddon-regular">Jeniecia's Book Log</h1>
+</header>
+
+<nav class="lugrasimo-regular">
+<h2>My Books &#128366;</h2>
+
+<button class="btn lugrasimo-regular" onclick="document.location='goals.html'">Goals</button>
+
+<button class="btn lugrasimo-regular" onclick="document.location='reviews.html'">Reviews</button>
+
+<button class="btn lugrasimo-regular" onclick="document.location='audiobook.html'">Audiobook</button>
+</nav>
+
+<section id="sortable">
+
+<article class="reading lugrasimo-regular book-section">
+<h3>Reading:</h3>
+<div class="book-flex">
+
+<a href="https://www.barnesandnoble.com/w/white-nights-fyodor-dostoyevsky/1020605626?ean=9781804471616" target="_blank">
+<img src="images/whitenights.jpg" alt="white nights book">
+</a>
+</div>
+</article>
+
+
+<article class="toread lugrasimo-regular book-section">
+<h3>To Be Read:</h3>
+<div class="book-flex">
 	
+<a href="https://www.amazon.com/Who-Have-Never-Known-Men-ebook/dp/B07L6XBVSQ" target="_blank">
+<img src="images/Iwhnkm.jpg" alt="I Who Have Never Known Men book">
+</a>
+	
+<a href="https://www.barnesandnoble.com/w/before-the-coffee-gets-cold-toshikazu-kawaguchi/1136277012" target="_blank">
+<img src="images/before.jpg" alt="Before the coffee gets cold book">
+</a>
+	
+<a href="https://www.barnesandnoble.com/w/the-metamorphosis-franz-kafka/1116615522" target="_blank">
+<img src="images/meta.jpg" alt="The Metamorphosis book">
+</a>
+	
+<a href="https://www.barnesandnoble.com/w/pride-and-prejudice-jane-austen/1106658784" target="_blank">
+<img src="images/pride.jpg" alt="Pride and Prejudice book">
+</a>
+
+</div>
+</article>
+
+<article class="read lugrasimo-regular book-section">
+<h3>Read:</h3>
+<div class="book-flex">
+
+<a href="https://www.amazon.com/Men-Who-Hate-Women-misogyny/dp/1398504653" target="_blank">
+<img src="images/mwhw.jpg" alt="Men who hate women book">
+</a>
+
+<a href="https://www.amazon.com/Book-Lovers-Emily-Henry/dp/0593334833" target="_blank">
+<img src="images/booklovers.jpg" alt="Book Lovers book">
+</a>
+
+<a href="https://www.barnesandnoble.com/w/notes-from-underground-fyodor-dostoevsky/1100272106" target="_blank">
+<img src="images/notes.jpg" alt="Notes from Underground book">
+</a>
+	
+<a href="https://www.barnesandnoble.com/w/the-bell-jar-sylvia-plath/1100550703?ean=9780060837020" target="_blank">
+<img src="images/belljar.jpg" alt="The Bell Jar book">
+</a>
+	
+</div>
+</article>
+</section>
+
+
+<footer>
+Copyright Jeniecia Williams
+</footer>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<script>
+$(function() {
+    $("#sortable").sortable();
+});
+</script>
+
 </body>
 </html>
