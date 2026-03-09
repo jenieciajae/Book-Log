@@ -185,3 +185,32 @@ transition:.25s;
 transform:scale(1.1);
 }
 
+
+
+.form-section{
+margin:20px;
+padding:20px;
+background:#fff5f7;
+border-radius:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+input[type=text]{
+width:60%;
+padding:8px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.form-btn{
+background:#FFB6C1;
+padding:10px 20px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-family:"Bookman Old Style", serif;
+}
+
+.form-btn:hover{
+background:#ff9bb3;
+}

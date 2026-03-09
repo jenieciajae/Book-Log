@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Submit a Book</title>
+
+<link rel="stylesheet" href="main.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Meddon&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="container">
+
+<header>
+<h1 class="lugrasimo-regular">Add a Book 📚</h1>
+</header>
+
+
+<!-- FORM -->
+
+<section class="form-section lugrasimo-regular">
+
+<form>
+
+<label>Book Title:</label><br>
+<input type="text" name="title"><br><br>
+
+<label>Author:</label><br>
+<input type="text" name="author"><br><br>
+
+
+<label>How did you read it?</label><br>
+
+<input type="radio" name="format" value="physical"> Physical Book<br>
+<input type="radio" name="format" value="ebook"> Ebook<br>
+<input type="radio" name="format" value="audio"> Audiobook<br><br>
+
+
+<label>What genres apply?</label><br>
+
+<input type="checkbox" name="genre" value="fiction"> Fiction<br>
+<input type="checkbox" name="genre" value="nonfiction"> Non-fiction<br>
+<input type="checkbox" name="genre" value="classic"> Classic<br>
+<input type="checkbox" name="genre" value="romance"> Romance<br><br>
+
+
+<label>Rating:</label><br>
+<input type="text" name="rating" placeholder="Example: 8/10"><br><br>
+
+<input type="submit" value="Submit Book" class="form-btn">
+
+</form>
+
+</section>
+
+
+<!-- AUDIO MEDIA -->
+
+<section class="lugrasimo-regular">
+
+<h2>Reading Ambience 🎧</h2>
+
+<audio controls>
+<source src="media/reading-ambience.mp3" type="audio/mpeg">
+Your browser does not support audio.
+</audio>
+
+</section>
+
+
+<!-- CANVAS -->
+
+<section class="lugrasimo-regular">
+
+<h2>Book Canvas</h2>
+
+<canvas id="bookCanvas" width="200" height="150"></canvas>
+
+</section>
+
+
+<footer>
+Copyright Jeniecia Williams
+</footer>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("bookCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "#FFB6C1";
+ctx.fillRect(40,40,120,80);
+
+ctx.strokeStyle = "black";
+ctx.strokeRect(40,40,120,80);
+
+ctx.font = "16px serif";
+ctx.fillStyle = "black";
+ctx.fillText("Book",85,85);
+
+</script>
+
+</body>
+</html>
