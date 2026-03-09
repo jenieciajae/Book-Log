@@ -22,7 +22,6 @@
 </header>
 
 
-<!-- FORM -->
 
 <section class="form-section lugrasimo-regular">
 
@@ -44,8 +43,10 @@
 
 <label>What genres apply?</label><br>
 
-<input type="checkbox" name="genre" value="fiction"> Fiction<br>
-<input type="checkbox" name="genre" value="nonfiction"> Non-fiction<br>
+<input type="checkbox" name="genre" value="fiction">
+ Fiction
+<input type="checkbox" name="genre" value="nonfiction"> 
+Non-fiction<br>
 <input type="checkbox" name="genre" value="classic"> Classic<br>
 <input type="checkbox" name="genre" value="romance"> Romance<br><br>
 
@@ -60,7 +61,6 @@
 </section>
 
 
-<!-- AUDIO MEDIA -->
 
 <section class="lugrasimo-regular">
 
@@ -73,9 +73,7 @@ Your browser does not support audio.
 
 </section>
 
-
-<!-- CANVAS -->
-
+	
 <section class="lugrasimo-regular">
 
 <h2>Book Canvas</h2>
@@ -83,8 +81,7 @@ Your browser does not support audio.
 <canvas id="bookCanvas" width="200" height="150"></canvas>
 
 </section>
-
-
+	
 <footer>
 Copyright Jeniecia Williams
 </footer>
@@ -96,15 +93,37 @@ Copyright Jeniecia Williams
 const canvas = document.getElementById("bookCanvas");
 const ctx = canvas.getContext("2d");
 
+/* book cover */
+
 ctx.fillStyle = "#FFB6C1";
-ctx.fillRect(40,40,120,80);
+ctx.fillRect(60,30,80,100);
+ctx.fillStyle = "#ff9bb3";
+ctx.fillRect(50,30,10,100);
+
+/* outline */
 
 ctx.strokeStyle = "black";
-ctx.strokeRect(40,40,120,80);
+ctx.lineWidth = 2;
+ctx.strokeRect(60,30,80,100);
+ctx.strokeStyle = "#666";
 
-ctx.font = "16px serif";
+ctx.beginPath();
+ctx.moveTo(70,50);
+ctx.lineTo(130,50);
+
+ctx.moveTo(70,70);
+ctx.lineTo(130,70);
+
+ctx.moveTo(70,90);
+ctx.lineTo(130,90);
+
+ctx.stroke();
+
+/* title */
+
 ctx.fillStyle = "black";
-ctx.fillText("Book",85,85);
+ctx.font = "14px serif";
+ctx.fillText("BOOK",85,115);
 
 </script>
 
