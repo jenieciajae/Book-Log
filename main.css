@@ -82,7 +82,27 @@ footer{
 	text-decoration:none;
 }
 
+.goals{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
 
+.goals th{
+background-color:#FFB6C1;
+padding:10px;
+}
+
+.goals td{
+padding:10px;
+background:#fff5f7;
+text-align:center;
+}
+
+ul{
+list-style-type:disc;
+padding-left:30px;
+}
 
 
 th, td {
