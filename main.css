@@ -5,8 +5,10 @@
 	
 }
 body{
-	background-color:#FFC0CB;
+background:linear-gradient(#FFC0CB,#ffd9e2);
+font-family:"Bookman Old Style", serif;
 }
+
 #container{
 	width:800px;
 	min-height:650px;
@@ -102,6 +104,7 @@ text-align:center;
 ul{
 list-style-type:disc;
 padding-left:30px;
+font-family: "Bookman Old Style", serif;
 }
 
 
@@ -181,3 +184,4 @@ transition:.25s;
 .book-flex img:hover{
 transform:scale(1.1);
 }
+
