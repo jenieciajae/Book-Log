@@ -214,3 +214,18 @@ font-family:"Bookman Old Style", serif;
 .form-btn:hover{
 background:#ff9bb3;
 }
+
+.table-scroll{
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.review{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.review td, .review th{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
