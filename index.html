@@ -18,71 +18,35 @@
 <body>
 <div id="container">
   <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Add Book</a></li>
-      <li><a href="#">Goals</a></li>
-    </ul>
-  </nav>
-  <div class="main-content">
-    <div class="form-section">
-      <input type="text" id="searchInput" placeholder="Search books...">
-      <button class="form-btn">Search</button>
-    </div>
-    
-    <div class="book-section reading">
-      <h3>Book Title</h3>
-      <p>Author Name</p>
-      <img src="book-cover.png" alt="Book cover">
-    </div>
-  </div>
-</div>
-<header>
-<h1 class="meddon-regular">Jeniecia's Book Log</h1>
-</header>
-
-
-<div class="book-container">
-  <div class="book-card">
-    <h3>Book Title</h3>
-    <p>Author</p>
-  </div>
-</div>
-	
-
-<nav class="lugrasimo-regular">
-<h2>My Books &#128366;</h2>
-
-<button class="btn lugrasimo-regular" onclick="document.location='goals.html'">Goals</button>
-
-<button class="btn lugrasimo-regular" onclick="document.location='reviews.html'">Reviews</button>
-
-<button class="btn lugrasimo-regular" onclick="document.location='audiobook.html'">Audiobook</button>
-	
-<button class="btn lugrasimo-regular" onclick="document.location='submit.html'">Submit a Book</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Add Book</a></li>
+    <li><a href="goals.html">Goals</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="audiobook.html">Audiobook</a></li>
+    <li><a href="submit.html">Submit a Book</a></li>
+  </ul>
 </nav>
-
-<section id="sortable">
-
-<article class="reading lugrasimo-regular book-section">
-<h3>Reading:</h3>
-<div class="book-flex">
-
-<a href="https://www.barnesandnoble.com/w/white-nights-fyodor-dostoyevsky/1020605626?ean=9781804471616" target="_blank">
-<img src="images/whitenights.jpg" alt="white nights book">
-</a>
-
-<a href="https://www.amazon.com/End-White-World-Supremacy-Speeches-ebook/dp/B01MTDWZ1F" target="_blank">
-<img src="images/malcolm.jpg" alt="The End of White World Supremacy book">
-</a>
-</div>
-</article>
-
-
-<article class="toread lugrasimo-regular book-section">
-<h3>To Be Read:</h3>
-<div class="book-flex">
 	
+	<section id="sortable">
+  <div class="main-content">
+    <div class="main-content">
+    <div class="book-section reading">
+      <h3>Reading</h3>
+      <div class="book-flex">
+        <a href="https://www.barnesandnoble.com/w/white-nights-fyodor-dostoyevsky/1020605626?ean=9781804471616" target="_blank">
+		<img src="images/whitenights.jpg" alt="white nights book">
+		</a>
+
+		<a href="https://www.amazon.com/End-White-World-Supremacy-Speeches-ebook/dp/B01MTDWZ1F" target="_blank">
+		<img src="images/malcolm.jpg" alt="The End of White World Supremacy book">
+		</a>
+      </div>
+    </div>
+
+    <div class="book-section toread">
+      <h3>To Be Read</h3>
+      <div class="book-flex">
 <a href="https://www.amazon.com/Who-Have-Never-Known-Men-ebook/dp/B07L6XBVSQ" target="_blank">
 <img src="images/Iwhnkm.jpg" alt="I Who Have Never Known Men book">
 </a>
@@ -99,13 +63,12 @@
 <img src="images/pride.jpg" alt="Pride and Prejudice book">
 </a>
 
-</div>
-</article>
+      </div>
+    </div>
 
-<article class="read lugrasimo-regular book-section">
-<h3>Read:</h3>
-<div class="book-flex">
-
+    <div class="book-section read">
+      <h3>Read</h3>
+      <div class="book-flex">
 <a href="https://www.amazon.com/Men-Who-Hate-Women-misogyny/dp/1398504653" target="_blank">
 <img src="images/mwhw.jpg" alt="Men who hate women book">
 </a>
@@ -125,9 +88,11 @@
 <a href="https://www.amazon.com/Perks-Being-Wallflower-Stephen-Chbosky/dp/0671027344" target="_blank">
 <img src="media/perks.jpg" alt="The Perks of being a wallflower book">
 </a>
-	
+      </div>
+    </div>
+  </div>
 </div>
-</article>
+	
 </section>
 
 
@@ -146,5 +111,6 @@ $(function() {
 </script>
 
 <script type="module" src="script.js"></script>
+	</div>
 </body>
 </html>
