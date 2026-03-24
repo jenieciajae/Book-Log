@@ -8,6 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Meddon&display=swap" rel="stylesheet">
 
@@ -16,12 +17,30 @@
 </head>
 <body>
 <div id="container">
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Add Book</a></li>
+      <li><a href="#">Goals</a></li>
+    </ul>
+  </nav>
+  <div class="main-content">
+    <div class="form-section">
+      <input type="text" id="searchInput" placeholder="Search books...">
+      <button class="form-btn">Search</button>
+    </div>
+    
+    <div class="book-section reading">
+      <h3>Book Title</h3>
+      <p>Author Name</p>
+      <img src="book-cover.png" alt="Book cover">
+    </div>
+  </div>
+</div>
 <header>
 <h1 class="meddon-regular">Jeniecia's Book Log</h1>
 </header>
 
-<input type="text" id="searchInput" placeholder="Search books...">
-<button onclick="searchBooks()">Search</button>
 
 <div class="book-container">
   <div class="book-card">
@@ -115,8 +134,6 @@
 <footer>
 Copyright Jeniecia Williams
 </footer>
-
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
