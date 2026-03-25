@@ -1,15 +1,11 @@
 // script
 
-// Make sure JS runs after page loads
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS is running ✅");
 
   const searchForm = document.getElementById("searchForm");
 
-  // Only run this code if we're on the search page
   if (searchForm) {
-    console.log("Search form found ✅");
-
     searchForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -24,31 +20,33 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsDiv.innerHTML = "<p>Loading...</p>";
 
       try {
+        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // ← REPLACE THIS WITH YOUR KEY
         const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
+          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=12&key=${API_KEY}`
         );
 
         const data = await response.json();
 
-        console.log(data); // helps debug
-
         resultsDiv.innerHTML = "";
 
-        if (!data.items) {
+        if (!data.items || data.items.length === 0) {
           resultsDiv.innerHTML = "<p>No results found.</p>";
           return;
         }
 
+     
         data.items.forEach((book) => {
           const title = book.volumeInfo.title || "No title";
           const authors = book.volumeInfo.authors
             ? book.volumeInfo.authors.join(", ")
             : "Unknown author";
+          const img = book.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x195?text=No+Cover";
 
           const bookCard = document.createElement("div");
-          bookCard.classList.add("book");
+          bookCard.classList.add("book-card");
 
           bookCard.innerHTML = `
+            <img src="${img}" alt="${title} cover">
             <h3>${title}</h3>
             <p>${authors}</p>
           `;
@@ -57,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } catch (error) {
         console.error("Error:", error);
-        resultsDiv.innerHTML = "<p>Something went wrong.</p>";
+        resultsDiv.innerHTML = "<p>Something went wrong. Try again later.</p>";
       }
     });
   }
