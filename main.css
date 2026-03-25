@@ -160,7 +160,6 @@ header h1 {
   transform: scale(1.1);
 }
 
-/*  Book Cards */
 .book-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
