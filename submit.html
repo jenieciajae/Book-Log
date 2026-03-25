@@ -18,28 +18,32 @@
 <h1 class="lugrasimo-regular">Submit a Book 📚</h1>
 </header>
 
-
-
+<div id="container">
+	<nav>
+    <ul>
+    	<li><a href="index.html">Home</a></li>
+   	 	<li><a href="search.html">Search a Book</a></li>
+    	<li><a href="goals.html">Goals</a></li>
+    	<li><a href="reviews.html">Reviews</a></li>
+    	<li><a href="audiobook.html">Audiobook</a></li>
+    	<li><a href="submit.html">Submit a Book</a></li>
+    </ul>
+  </nav>
+	
 <section class="form-section lugrasimo-regular">
-
 <form>
-
 <label>Book Title:</label><br>
 <input type="text" name="title"><br><br>
 
 <label>Author:</label><br>
 <input type="text" name="author"><br><br>
 
-
 <label>How did you read it?</label><br>
-
 <input type="radio" name="format" value="physical"> Physical Book<br>
 <input type="radio" name="format" value="ebook"> Ebook<br>
 <input type="radio" name="format" value="audio"> Audiobook<br><br>
 
-
 <label>What genres apply?</label><br>
-
 <input type="checkbox" name="genre" value="fiction">
  Fiction
 <input type="checkbox" name="genre" value="nonfiction"> 
@@ -50,53 +54,35 @@ Non-fiction<br>
 
 <label>Rating:</label><br>
 <input type="text" name="rating" placeholder="Example: 8/10"><br><br>
-
 <input type="submit" value="Submit Book" class="form-btn">
-
 </form>
-
 </section>
 
 
 
 <section class="lugrasimo-regular">
-
 <h2>Reading Ambience 🎧</h2>
-
 <audio controls>
 <source src="media/reading-ambience.mp3" type="audio/mpeg">
 Your browser does not support audio.
 </audio>
-
 </section>
 
 	
 <section class="lugrasimo-regular">
-
-<h2>Book Canvas</h2>
-
 <canvas id="bookCanvas" width="200" height="150"></canvas>
-
 </section>
 	
-<footer>
-Copyright Jeniecia Williams
-</footer>
 
 
 <script>
-
 const canvas = document.getElementById("bookCanvas");
 const ctx = canvas.getContext("2d");
-
-
 
 ctx.fillStyle = "#FFB6C1";
 ctx.fillRect(60,30,80,100);
 ctx.fillStyle = "#ff9bb3";
 ctx.fillRect(50,30,10,100);
-
-
 
 ctx.strokeStyle = "black";
 ctx.lineWidth = 2;
@@ -115,13 +101,16 @@ ctx.lineTo(130,90);
 
 ctx.stroke();
 
-
-
 ctx.fillStyle = "black";
 ctx.font = "14px serif";
 ctx.fillText("BOOK",85,115);
 
 </script>
-
+	
+	
+</div>
+	<footer>
+Copyright Jeniecia Williams
+</footer>
 </body>
 </html>

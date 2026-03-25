@@ -1,7 +1,7 @@
 // script
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("JS is running ✅");
+  console.log("JS is running");
 
   const searchForm = document.getElementById("searchForm");
 
