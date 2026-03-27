@@ -1,5 +1,4 @@
 // script.js
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS is running");
 
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsDiv.innerHTML = "<p>Loading...</p>";
 
       try {
-        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // Replace with your own key if needed
+        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // Replace if needed
         const response = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
             query
@@ -48,16 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
             book.volumeInfo.imageLinks?.thumbnail ||
             "https://via.placeholder.com/128x195?text=No+Cover";
 
-          const bookCard = document.createElement("div");
-          bookCard.classList.add("book-card");
+          // Create a book card as a link (<a>) for scroll compatibility
+          const bookLink = document.createElement("a");
+          bookLink.href = "#"; // or wherever you want
+          bookLink.classList.add("book-card");
+          bookLink.innerHTML = `
+            <img src="${img}" alt="${title} cover">
+            <h3>${title}</h3>
+            <p>${authors}</p>
+          `;
 
-           bookCard.innerHTML = `
-    <img src="${img}" alt="${title} cover">
-    <h3>${title}</h3>
-    <p>${authors}</p>
-  `;
-
-          resultsDiv.appendChild(bookCard);
+          resultsDiv.appendChild(bookLink);
         });
       } catch (error) {
         console.error("Error:", error);
@@ -70,28 +70,36 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // Scroll Arrows Functionality
   // -------------------------------
-  document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
-  const leftBtn = wrapper.querySelector(".scroll-btn.left");
-  const rightBtn = wrapper.querySelector(".scroll-btn.right");
-  const bookFlex = wrapper.querySelector(".book-flex");
+  function initScrollArrows() {
+    document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
+      const leftBtn = wrapper.querySelector(".scroll-btn.left");
+      const rightBtn = wrapper.querySelector(".scroll-btn.right");
+      const bookFlex = wrapper.querySelector(".book-flex");
 
-  if (!bookFlex) return; // skip if no books yet
+      if (!bookFlex) return;
 
-  // Use the first child of bookFlex as the reference for width
-  const firstBook = bookFlex.children[0];
-  const bookGap = parseInt(getComputedStyle(bookFlex).gap) || 20;
-  const bookWidth = firstBook
-    ? firstBook.offsetWidth + bookGap
-    : 80; // fallback if no books yet
+      // dynamically calculate book width when clicked
+      leftBtn.addEventListener("click", () => {
+        if (bookFlex.children.length > 0) {
+          const gap = parseInt(getComputedStyle(bookFlex).gap) || 20;
+          const width = bookFlex.children[0].offsetWidth + gap;
+          bookFlex.scrollBy({ left: -width, behavior: "smooth" });
+        }
+      });
 
-  // Scroll left
-  leftBtn.addEventListener("click", () => {
-    bookFlex.scrollBy({ left: -bookWidth, behavior: "smooth" });
-  });
+      rightBtn.addEventListener("click", () => {
+        if (bookFlex.children.length > 0) {
+          const gap = parseInt(getComputedStyle(bookFlex).gap) || 20;
+          const width = bookFlex.children[0].offsetWidth + gap;
+          bookFlex.scrollBy({ left: width, behavior: "smooth" });
+        }
+      });
+    });
+  }
 
-  // Scroll right
-  rightBtn.addEventListener("click", () => {
-    bookFlex.scrollBy({ left: bookWidth, behavior: "smooth" });
-  });
-});
+  // Initialize scroll arrows on page load
+  initScrollArrows();
+
+  // Optional: Re-initialize if books are added dynamically later
+  // You can call initScrollArrows() again after adding new books
 });
