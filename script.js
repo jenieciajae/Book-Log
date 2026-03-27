@@ -1,8 +1,9 @@
-// script
+// script.js
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS is running");
 
+  // Book search
   const searchForm = document.getElementById("searchForm");
 
   if (searchForm) {
@@ -20,9 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsDiv.innerHTML = "<p>Loading...</p>";
 
       try {
-        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM";
+        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // Replace with your own key if needed
         const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=12&key=${API_KEY}`
+          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
+            query
+          )}&maxResults=12&key=${API_KEY}`
         );
 
         const data = await response.json();
@@ -34,13 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
-     
         data.items.forEach((book) => {
           const title = book.volumeInfo.title || "No title";
           const authors = book.volumeInfo.authors
             ? book.volumeInfo.authors.join(", ")
             : "Unknown author";
-          const img = book.volumeInfo.imageLinks?.thumbnail || "https://via.placeholder.com/128x195?text=No+Cover";
+          const img =
+            book.volumeInfo.imageLinks?.thumbnail ||
+            "https://via.placeholder.com/128x195?text=No+Cover";
 
           const bookCard = document.createElement("div");
           bookCard.classList.add("book-card");
@@ -55,21 +59,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } catch (error) {
         console.error("Error:", error);
-        resultsDiv.innerHTML = "<p>Something went wrong. Try again later.</p>";
+        resultsDiv.innerHTML =
+          "<p>Something went wrong. Try again later.</p>";
       }
     });
   }
-});
 
-const scrollAmount = 300; // pixels to scroll per click
+  // -------------------------------
+  // Scroll Arrows Functionality
+  // -------------------------------
+  document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
+    const leftBtn = wrapper.querySelector(".scroll-btn.left");
+    const rightBtn = wrapper.querySelector(".scroll-btn.right");
+    const bookFlex = wrapper.querySelector(".book-flex");
 
-document.querySelectorAll('.scroll-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const container = btn.parentElement.querySelector('.book-flex');
-    if (btn.classList.contains('left')) {
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+    if (!bookFlex) return; // skip if no books yet
+
+    // Calculate scroll per book including gap
+    const firstBook = bookFlex.querySelector("a");
+    const bookGap = 20; // match your CSS gap
+    const bookWidth = firstBook
+      ? firstBook.offsetWidth + bookGap
+      : 80; // fallback if no book yet
+
+    // Scroll left
+    leftBtn.addEventListener("click", () => {
+      bookFlex.scrollBy({ left: -bookWidth, behavior: "smooth" });
+    });
+
+    // Scroll right
+    rightBtn.addEventListener("click", () => {
+      bookFlex.scrollBy({ left: bookWidth, behavior: "smooth" });
+    });
   });
 });
