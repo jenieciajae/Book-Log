@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  width:900px;
+  width:1000px;
   margin: 40px auto;
   border-radius: 25px;
   background: #fffafc;
@@ -149,9 +149,16 @@ header h1 {
 
 .book-flex {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
-  justify-content: flex-start;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.book-flex a {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 90px;
 }
 
 .book-flex a img {
@@ -214,10 +221,9 @@ header h1 {
   width: 100%;          
   max-width: 450px;     
   overflow: hidden;  
-  margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 10px;          
+           
 }
 
 .read-scroll-wrapper .book-flex {
@@ -262,44 +268,44 @@ header h1 {
   transform: scale(1.1);
 }
 
-.book-section.read .book-flex::-webkit-scrollbar {
-  height: 6px;
+.book-flex::-webkit-scrollbar {
+  height: 8px;
 }
 
-.book-section.read .book-flex::-webkit-scrollbar-thumb {
+.book-flex::-webkit-scrollbar-thumb {
   background-color: #305266;
   border-radius: 4px;
 }
 
-.book-section.read .book-flex::-webkit-scrollbar-track {
+.book-flex::-webkit-scrollbar-track {
   background: #f0f0f0;
 }
 
 /* Scroll buttons */
 .scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  background-color: rgba(48, 82, 102, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
   width: 35px;
   height: 35px;
-  border-radius: 50%;
-  background-color: rgba(48, 82, 102, 0.8);
-  color: #fff;
-  font-family: Arial, sans-serif; /* consistent arrows */
+  cursor: pointer;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
-  cursor: pointer;
 }
 
 .scroll-btn.left {
-  left: -10px;
+  left: 0;
 }
 
 .scroll-btn.right {
-  right: -10px;
+  right: 0;
 }
 
 .scroll-btn:hover {
