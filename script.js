@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Scroll Arrows for Read/Reading/To Be Read sections
-document.addEventListener("DOMContentLoaded", () => {
-  const scrollAmount = 60 + 20; // 60px book width + 20px gap (match your CSS)
+  // Scroll Arrows 
+  document.addEventListener("DOMContentLoaded", () => {
+  const scrollAmount = 60 + 20; 
 
  
   document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {

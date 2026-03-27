@@ -149,10 +149,11 @@ header h1 {
 
 .book-flex {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 10px 0;
+ flex-wrap: nowrap;
 }
 
 .book-flex a {
