@@ -16,9 +16,9 @@ body {
 /* Container */
 #container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
-  width:100%;
+  width:900px;
   margin: 40px auto;
   border-radius: 25px;
   background: #fffafc;
@@ -81,7 +81,7 @@ header h1 {
 }
 
 .main-content {
-  flex: 3 1 500px;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   min-width: 300px;
@@ -124,7 +124,15 @@ header h1 {
 }
 
 /* Books- homepage */
+.books-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 30px; 
+  width: 100%;
+}
 .book-section {
+  max-width: 1050px;
   width: 100%;
   min-height: 150px;
   border-radius: 20px;
@@ -218,12 +226,12 @@ header h1 {
   overflow-x: auto;        
   scroll-behavior: smooth;
   padding: 10px 0;
-  flex-shrink: 0;          
-  width: max-content;    
+  flex: none;
+  justify-content: flex-start;    
 }
 
 .read-scroll-wrapper .book-flex a {
-  flex: 0 0 auto;    /* fixed size, no grow/shrink */
+  flex: 0 0 auto;  
   width: 60px;
   height: 90px;
 }
@@ -269,22 +277,21 @@ header h1 {
 
 /* Scroll buttons */
 .scroll-btn {
-  background-color: rgba(48, 82, 102, 0.8);
-  color: white;
-  border: none;
-  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 35px;
   height: 35px;
-  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgba(48, 82, 102, 0.8);
+  color: #fff;
+  font-family: Arial, sans-serif; /* consistent arrows */
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 1;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .scroll-btn.left {
