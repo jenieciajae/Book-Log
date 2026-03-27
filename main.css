@@ -202,13 +202,30 @@ header h1 {
 }
 
 .read-scroll-wrapper {
+  position: relative;
+  width: 100%;          
+  max-width: 450px;     
+  overflow: hidden;  
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
+  gap: 10px;          
+}
+
+.read-scroll-wrapper .book-flex {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;        
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  flex-shrink: 0;          
+  width: max-content;    
+}
+
+.read-scroll-wrapper .book-flex a {
+  flex: 0 0 auto;    /* fixed size, no grow/shrink */
+  width: 60px;
+  height: 90px;
 }
 
 .book-section.read .book-flex {
