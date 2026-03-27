@@ -71,27 +71,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // Scroll Arrows Functionality
   // -------------------------------
   document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
-    const leftBtn = wrapper.querySelector(".scroll-btn.left");
-    const rightBtn = wrapper.querySelector(".scroll-btn.right");
-    const bookFlex = wrapper.querySelector(".book-flex");
+  const leftBtn = wrapper.querySelector(".scroll-btn.left");
+  const rightBtn = wrapper.querySelector(".scroll-btn.right");
+  const bookFlex = wrapper.querySelector(".book-flex");
 
-    if (!bookFlex) return; // skip if no books yet
+  if (!bookFlex) return; // skip if no books yet
 
-    // Calculate scroll per book including gap
-    const firstBook = bookFlex.querySelector("a");
-    const bookGap = 20; // match your CSS gap
-    const bookWidth = firstBook
-      ? firstBook.offsetWidth + bookGap
-      : 80; // fallback if no book yet
+  // Use the first child of bookFlex as the reference for width
+  const firstBook = bookFlex.children[0];
+  const bookGap = parseInt(getComputedStyle(bookFlex).gap) || 20;
+  const bookWidth = firstBook
+    ? firstBook.offsetWidth + bookGap
+    : 80; // fallback if no books yet
 
-    // Scroll left
-    leftBtn.addEventListener("click", () => {
-      bookFlex.scrollBy({ left: -bookWidth, behavior: "smooth" });
-    });
-
-    // Scroll right
-    rightBtn.addEventListener("click", () => {
-      bookFlex.scrollBy({ left: bookWidth, behavior: "smooth" });
-    });
+  // Scroll left
+  leftBtn.addEventListener("click", () => {
+    bookFlex.scrollBy({ left: -bookWidth, behavior: "smooth" });
   });
+
+  // Scroll right
+  rightBtn.addEventListener("click", () => {
+    bookFlex.scrollBy({ left: bookWidth, behavior: "smooth" });
+  });
+});
 });
