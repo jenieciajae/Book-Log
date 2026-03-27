@@ -66,39 +66,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // -------------------------------
-  // Scroll Arrows Functionality
-  // -------------------------------
-  function initScrollArrows() {
-    document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
-      const leftBtn = wrapper.querySelector(".scroll-btn.left");
-      const rightBtn = wrapper.querySelector(".scroll-btn.right");
-      const bookFlex = wrapper.querySelector(".book-flex");
+  
+  // Scroll Arrows 
+document.addEventListener("DOMContentLoaded", () => {
+  const wrappers = document.querySelectorAll(".read-scroll-wrapper");
 
-      if (!bookFlex) return;
+  wrappers.forEach(wrapper => {
+    const bookFlex = wrapper.querySelector(".book-flex");
+    const leftBtn = wrapper.querySelector(".scroll-btn.left");
+    const rightBtn = wrapper.querySelector(".scroll-btn.right");
 
-      // dynamically calculate book width when clicked
+    if (!bookFlex) return; // no books in this wrapper
+
+    const firstBook = bookFlex.querySelector("a");
+    const gap = 20; // match your CSS gap
+    const scrollAmount = firstBook ? firstBook.offsetWidth + gap : 100;
+
+    if (leftBtn) {
       leftBtn.addEventListener("click", () => {
-        if (bookFlex.children.length > 0) {
-          const gap = parseInt(getComputedStyle(bookFlex).gap) || 20;
-          const width = bookFlex.children[0].offsetWidth + gap;
-          bookFlex.scrollBy({ left: -width, behavior: "smooth" });
-        }
+        bookFlex.scrollBy({ left: -scrollAmount, behavior: "smooth" });
       });
+    }
 
+    if (rightBtn) {
       rightBtn.addEventListener("click", () => {
-        if (bookFlex.children.length > 0) {
-          const gap = parseInt(getComputedStyle(bookFlex).gap) || 20;
-          const width = bookFlex.children[0].offsetWidth + gap;
-          bookFlex.scrollBy({ left: width, behavior: "smooth" });
-        }
+        bookFlex.scrollBy({ left: scrollAmount, behavior: "smooth" });
       });
-    });
-  }
-
-  // Initialize scroll arrows on page load
-  initScrollArrows();
-
-  // Optional: Re-initialize if books are added dynamically later
-  // You can call initScrollArrows() again after adding new books
+    }
+  });
 });
