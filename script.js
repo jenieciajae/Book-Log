@@ -2,9 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS is running");
 
-  // -------------------------------
-  // Search Form Functionality
-  // -------------------------------
+ 
+  // Book Search
   const searchForm = document.getElementById("searchForm");
 
   if (searchForm) {
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsDiv.innerHTML = "<p>Loading...</p>";
 
       try {
-        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // Replace if needed
+        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; 
         const response = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
             query
