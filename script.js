@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsDiv.innerHTML = "<p>Loading...</p>";
 
       try {
-        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM"; // Replace with your own key if needed
+        const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM";
         const response = await fetch(
           `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
             query
@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const bookCard = document.createElement("div");
           bookCard.classList.add("book-card");
 
-          bookCard.innerHTML = `
+          bookCard.innerHTML = "
             <img src="${img}" alt="${title} cover">
             <h3>${title}</h3>
             <p>${authors}</p>
-          `;
+          ";
 
           resultsDiv.appendChild(bookCard);
         });
@@ -65,31 +65,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // -------------------------------
-  // Scroll Arrows Functionality
-  // -------------------------------
+  // Scroll Arrows for Read/Reading/To Be Read sections
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollAmount = 60 + 20; // 60px book width + 20px gap (match your CSS)
+
+ 
   document.querySelectorAll(".read-scroll-wrapper").forEach((wrapper) => {
     const leftBtn = wrapper.querySelector(".scroll-btn.left");
     const rightBtn = wrapper.querySelector(".scroll-btn.right");
     const bookFlex = wrapper.querySelector(".book-flex");
 
-    if (!bookFlex) return; // skip if no books yet
+    if (!bookFlex) return; 
 
-    // Calculate scroll per book including gap
-    const firstBook = bookFlex.querySelector("a");
-    const bookGap = 20; // match your CSS gap
-    const bookWidth = firstBook
-      ? firstBook.offsetWidth + bookGap
-      : 80; // fallback if no book yet
-
-    // Scroll left
+    // Scroll left 
     leftBtn.addEventListener("click", () => {
-      bookFlex.scrollBy({ left: -bookWidth, behavior: "smooth" });
+      bookFlex.scrollBy({ left: -scrollAmount, behavior: "smooth" });
     });
 
-    // Scroll right
+    // Scroll right 
     rightBtn.addEventListener("click", () => {
-      bookFlex.scrollBy({ left: bookWidth, behavior: "smooth" });
+      bookFlex.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
   });
 });
