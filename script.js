@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const bookCard = document.createElement("div");
           bookCard.classList.add("book-card");
 
-          bookCard.innerHTML = "
-            <img src="${img}" alt="${title} cover">
-            <h3>${title}</h3>
-            <p>${authors}</p>
-          ";
+           bookCard.innerHTML = `
+    <img src="${img}" alt="${title} cover">
+    <h3>${title}</h3>
+    <p>${authors}</p>
+  `;
 
           resultsDiv.appendChild(bookCard);
         });
