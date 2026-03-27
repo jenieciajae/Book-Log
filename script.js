@@ -60,3 +60,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+const scrollAmount = 300; // pixels to scroll per click
+
+document.querySelectorAll('.scroll-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.parentElement.querySelector('.book-flex');
+    if (btn.classList.contains('left')) {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  });
+});
