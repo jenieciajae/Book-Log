@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("JS is running");
 
- 
   // Book Search
   const searchForm = document.getElementById("searchForm");
 
@@ -46,9 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
             book.volumeInfo.imageLinks?.thumbnail ||
             "https://via.placeholder.com/128x195?text=No+Cover";
 
-          // Create a book card as a link (<a>) for scroll compatibility
           const bookLink = document.createElement("a");
-          bookLink.href = "#"; // or wherever you want
+          bookLink.href = "#";
           bookLink.classList.add("book-card");
           bookLink.innerHTML = `
             <img src="${img}" alt="${title} cover">
@@ -66,9 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
   // Scroll Arrows 
-document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll(".read-scroll-wrapper");
 
   wrappers.forEach(wrapper => {
@@ -76,10 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftBtn = wrapper.querySelector(".scroll-btn.left");
     const rightBtn = wrapper.querySelector(".scroll-btn.right");
 
-    if (!bookFlex) return; // no books in this wrapper
+    if (!bookFlex) return;
 
     const firstBook = bookFlex.querySelector("a");
-    const gap = 20; // match your CSS gap
+    const gap = 20;
     const scrollAmount = firstBook ? firstBook.offsetWidth + gap : 100;
 
     if (leftBtn) {
