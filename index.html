@@ -17,11 +17,10 @@
 </head>
 <body>
 <header>
-<h1>Jeniecia's Book Log</h1>
-</header>
-<div id="container">
-  <nav>
-  <ul>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Book Log</a>
+      <ul class="nav-menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="search.html">Search a Book</a></li>
     <li><a href="goals.html">Goals</a></li>
@@ -29,8 +28,18 @@
     <li><a href="audiobook.html">Audiobook</a></li>
     <li><a href="submit.html">Submit a Book</a></li>
   </ul>
-</nav>
-	
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>Jeniecia's Book Log</h1>
+      <p>A personal space for my books and reviews. Browse related titles or suggest a book I might enjoy through the menu above!</p>
+    </div>
+  </section>
+</header>
+<div id="container">
 	<section id="sortable">
   <div class="main-content">
 
@@ -118,8 +127,25 @@ $(function() {
 
 <script type="module" src="script.js"></script>
 	</div>
-	<footer>
-Copyright Jeniecia Williams
+	<footer class="site-footer">
+  <div class="footer-container">
+    <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
+
+    <div class="footer-links">
+      <a href="#books">Books</a>
+      <a href="#search">Search a Book</a>
+      <a href="#submit">Submit a Book</a>
+      <a href="#reviews">Reviews</a>
+    </div>
+
+    <p>Follow me on social media!</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/jeniecia.jaee/?hl=en" target="_blank">
+		  <img src="images/instagram.jpg" alt="Instagram"></a>
+      <a href="https://www.facebook.com/share/1BwZPVi3dF/?mibextid=wwXIfr" target="_blank">
+		  <img src="images/facebook.jpg" alt="Facebook"></a>
+    </div>
+  </div>
 </footer>
 	
 </body>

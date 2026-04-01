@@ -28,38 +28,85 @@ body {
 }
 
 /* nav menu */
-nav {
-  flex: 0 0 220px; /* fixed width of 220px */
-  background-color: #fff0eb;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-nav ul {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.75rem;
+  color: #6b4c9a;
+  text-decoration: none;
+}
+
+.nav-menu {
   list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
   padding: 0;
 }
 
-nav ul li {
-  margin: 10px 0;
-}
-
-nav ul li a {
-  display: inline-block;
-  padding: 8px 15px;
-  margin: 4px 0;
-  background: linear-gradient(135deg, #ffb6c1, #ff9bb3);
-  border-radius: 20px;
-  color: #fff;
+.nav-menu li a {
+  font-family: 'Poppins', sans-serif;
+  color: #444;
   text-decoration: none;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+.nav-menu li a:hover {
+  color: #ff7c88;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 70vh;
+  background: linear-gradient(135deg, #fce4ec, #fff3e0);
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 3rem;
+  color: #6b4c9a;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  color: #444;
+}
+
+.page-hero {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #fff3e0; /* soft background matching hero */
+}
+
+.page-hero h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 2.5rem;
+  color: #6b4c9a;
+  margin: 0;
 }
 
 /*Headers*/
@@ -320,11 +367,52 @@ header h1 {
 }
 
 /* footer */
-footer {
+.site-footer {
+  background-color: #fff0f5; /* soft pastel pink */
   text-align: center;
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: #999;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #444;
+  border-top: 1px solid #f0d9e5;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-footer .footer-links {
+  margin: 15px 0;
+}
+
+.site-footer .footer-links a {
+  margin: 0 15px;
+  color: #6b4c9a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.site-footer .footer-links a:hover {
+  color: #ff7c88;
+}
+
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.social-icons img {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
 }
 
 /* responsive */
