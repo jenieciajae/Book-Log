@@ -13,14 +13,14 @@
 	<header>
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">Book Log</a>
+      <a href="#" class="logo">Jeniecia's Book Log</a>
       <ul class="nav-menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="search.html">Search a Book</a></li>
     <li><a href="goals.html">Goals</a></li>
     <li><a href="reviews.html">Reviews</a></li>
     <li><a href="audiobook.html">Audiobook</a></li>
-    <li><a href="submit.html">Submit a Book</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
     </div>
   </nav>
@@ -31,9 +31,54 @@
   </div>
 </header>
 	<div id="container">
+	<section class="lugrasimo-regular">
+		<h2>Reading Ambiance 🎧</h2>
+		<audio controls>
+		<source src="media/reading-ambience.mp3" type="audio/mpeg">
+		Your browser does not support audio.
+		</audio>
+	</section>
 		
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/jIIJz6lHLTQ?si=byVP1fnMJ7JYwP-1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/PhDdPBf_do8?si=5Oj8LxIKtGQC1b_X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		
+		<section class="lugrasimo-regular">
+<canvas id="bookCanvas" width="200" height="150"></canvas>
+</section>
+	
+
+
+<script>
+const canvas = document.getElementById("bookCanvas");
+const ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "#FFB6C1";
+ctx.fillRect(60,30,80,100);
+ctx.fillStyle = "#ff9bb3";
+ctx.fillRect(50,30,10,100);
+
+ctx.strokeStyle = "black";
+ctx.lineWidth = 2;
+ctx.strokeRect(60,30,80,100);
+ctx.strokeStyle = "#666";
+
+ctx.beginPath();
+ctx.moveTo(70,50);
+ctx.lineTo(130,50);
+
+ctx.moveTo(70,70);
+ctx.lineTo(130,70);
+
+ctx.moveTo(70,90);
+ctx.lineTo(130,90);
+
+ctx.stroke();
+
+ctx.fillStyle = "black";
+ctx.font = "14px serif";
+ctx.fillText("BOOK",85,115);
+
+</script>
 	</div>
 	<footer class="site-footer">
   <div class="footer-container">
@@ -42,7 +87,7 @@
     <div class="footer-links">
       <a href="index.html">Books</a>
       <a href="search.html">Search a Book</a>
-      <a href="submit.html">Submit a Book</a>
+      <a href="about.html">About</a>
       <a href="reviews.html">Reviews</a>
     </div>
 

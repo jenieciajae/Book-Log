@@ -42,7 +42,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -356,6 +356,25 @@ header {
   color: #333;
   line-height: 1.5;
 }
+
+.about-section {
+  width: 100%;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.about-content p {
+  margin-bottom: 18px;
+  font-size: 1rem;
+}
+
 
 /* footer */
 .site-footer {
