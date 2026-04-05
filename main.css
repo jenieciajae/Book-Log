@@ -429,7 +429,7 @@ header {
 @media (max-width: 1024px) {
   #container {
     flex-direction: column;
-    align-items: center;
+    
   }
 
   nav, .main-content {
@@ -477,7 +477,7 @@ header {
   }
 
   nav ul {
-    flex-direction: column; 
+    flex-direction: row; 
     gap: 10px;
   }
 
