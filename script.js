@@ -76,8 +76,8 @@ resultsDiv.appendChild(bookLink);
   
 
 document.addEventListener("DOMContentLoaded", () => {
-
-  const form = document.getElementById("audioSearchForm");
+	console.log("Audiobook search JS loaded");
+const form = document.getElementById("audioSearchForm");
 
   if (form) {
     form.addEventListener("submit", async (e) => {
