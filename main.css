@@ -490,12 +490,12 @@ header {
 
   .book-flex {
     justify-content: center;
-    flex-direction: column; 
+    
     gap: 20px;
   }
 
   .form-section {
-    flex-direction: column;
+    
     gap: 15px;
   }
 
