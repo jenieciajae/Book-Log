@@ -46,15 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
             "https://via.placeholder.com/128x195?text=No+Cover";
 
           const bookLink = document.createElement("a");
-          bookLink.href = "#";
-          bookLink.classList.add("book-card");
-          bookLink.innerHTML = `
-            <img src="${img}" alt="${title} cover">
-            <h3>${title}</h3>
-            <p>${authors}</p>
-          `;
+bookLink.classList.add("book-card");
 
-          resultsDiv.appendChild(bookLink);
+// REAL GOOGLE BOOKS LINK
+bookLink.href =
+  book.volumeInfo.infoLink ||
+  book.volumeInfo.previewLink ||
+  "#";
+
+bookLink.target = "_blank";
+bookLink.rel = "noopener noreferrer";
+
+bookLink.innerHTML = `
+  <img src="${img}" alt="${title} cover">
+  <h3>${title}</h3>
+  <p>${authors}</p>
+`;
+
+resultsDiv.appendChild(bookLink);
         });
       } catch (error) {
         console.error("Error:", error);
@@ -63,31 +72,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // Scroll Arrows 
-  const wrappers = document.querySelectorAll(".read-scroll-wrapper");
-
-  wrappers.forEach(wrapper => {
-    const bookFlex = wrapper.querySelector(".book-flex");
-    const leftBtn = wrapper.querySelector(".scroll-btn.left");
-    const rightBtn = wrapper.querySelector(".scroll-btn.right");
-
-    if (!bookFlex) return;
-
-    const firstBook = bookFlex.querySelector("a");
-    const gap = 20;
-    const scrollAmount = firstBook ? firstBook.offsetWidth + gap : 100;
-
-    if (leftBtn) {
-      leftBtn.addEventListener("click", () => {
-        bookFlex.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      });
-    }
-
-    if (rightBtn) {
-      rightBtn.addEventListener("click", () => {
-        bookFlex.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      });
-    }
-  });
 });
+  

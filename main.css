@@ -18,7 +18,8 @@ body {
   display: flex;
   flex-wrap: nowrap;
   width:100%;
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
   border-radius: 25px;
   background: #fffafc;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
@@ -78,7 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 70vh;
+  min-height: 400px;
   background: linear-gradient(135deg, #fce4ec, #fff3e0);
   padding: 0 20px;
 }
@@ -160,22 +161,23 @@ header {
 }
 
 /* Books- homepage */
-.books-wrapper {
+.read-scroll-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; 
   gap: 30px; 
   width: 100%;
+  flex: 1;
 }
 
 .book-section {
-  max-width: 1050px;
+  max-width: 1200px;
   width: 100%;
   min-height: 150px;
   border-radius: 20px;
   padding: 15px;
   background: #fff5f7;
   box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  flex: 0 0 auto;
 }
 
 .book-section h3 {
@@ -207,6 +209,30 @@ header {
   transform: scale(1.1);
 }
 
+
+/* Read / To Be Read / Currently Reading sections */
+.book-section.read,
+.book-section.tbr,
+.book-section.reading {
+  overflow: visible; 
+}
+
+.book-section.read .book-flex,
+.book-section.tbr .book-flex,
+.book-section.reading .book-flex {
+  flex-wrap: wrap;   
+  overflow: visible; 
+  gap: 15px;
+}
+
+.book-section.read .book-flex a,
+.book-section.tbr .book-flex a,
+.book-section.reading .book-flex a {
+  flex: 0 1 auto;
+  width: 60px;
+  height: 90px;
+}
+/*search a book*/
 .book-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -243,33 +269,6 @@ header {
   color: #666;
   text-align: center;
   margin: 0;
-}
-
-/* Read / To Be Read / Currently Reading sections */
-.book-section.read,
-.book-section.tbr,
-.book-section.reading {
-  overflow: visible; 
-}
-
-.book-section.read .book-flex,
-.book-section.tbr .book-flex,
-.book-section.reading .book-flex {
-  flex-wrap: wrap;   
-  overflow: visible; 
-  gap: 15px;
-}
-
-.book-section.read .book-flex a,
-.book-section.tbr .book-flex a,
-.book-section.reading .book-flex a {
-  flex: 0 1 auto;
-  width: 60px;
-  height: 90px;
-}
-
-.scroll-btn {
-  display: none;
 }
 
 /* table/ review tab */
@@ -434,7 +433,7 @@ header {
 
   nav, .main-content {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
   }
 
   .book-section {
