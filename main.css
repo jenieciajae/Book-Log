@@ -499,20 +499,6 @@ header {
     gap: 20px;
   }
 
-  .form-section form {
-    width: 100%;
-  }
-
-  .form-section input,
-  .form-section label {
-    width: 100%;
-  }
-}
-
-  .form-section input[type=text], .form-section .form-btn {
-    width: 100%;
-	 box-sizing: border-box;
-  }
 
   nav ul {
     flex-direction: row; 
@@ -556,4 +542,3 @@ header {
   .social-icons a {
     margin: 0 8px;
   }
-}
