@@ -487,6 +487,11 @@ header {
     font-size: 16px;
     padding: 10px;
   }
+	
+	.book-container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
 
   .book-flex {
     justify-content: center;
@@ -501,6 +506,7 @@ header {
 
   .form-section input[type=text], .form-section .form-btn {
     width: 100%;
+	 box-sizing: border-box;
   }
 
   nav ul {
