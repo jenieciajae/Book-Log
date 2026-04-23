@@ -74,3 +74,75 @@ resultsDiv.appendChild(bookLink);
   }
 });
   
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const form = document.getElementById("audioSearchForm");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const query = document.getElementById("audioSearchInput").value.trim();
+      const resultsDiv = document.getElementById("audioResults");
+
+      if (!query) {
+        resultsDiv.innerHTML = "<p>Please enter something.</p>";
+        return;
+      }
+
+      resultsDiv.innerHTML = "<p>Loading...</p>";
+
+      try {
+        const API_KEY = "YOUR_GOOGLE_BOOKS_API_KEY";
+
+        const response = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query + " audiobook")}&maxResults=12&key=${API_KEY}`
+        );
+
+        const data = await response.json();
+
+        resultsDiv.innerHTML = "";
+
+        if (!data.items || data.items.length === 0) {
+          resultsDiv.innerHTML = "<p>No audiobooks found.</p>";
+          return;
+        }
+
+        data.items.forEach((book) => {
+          const title = book.volumeInfo.title || "No title";
+          const authors = book.volumeInfo.authors
+            ? book.volumeInfo.authors.join(", ")
+            : "Unknown author";
+
+          const img =
+            book.volumeInfo.imageLinks?.thumbnail ||
+            "https://via.placeholder.com/128x195?text=No+Cover";
+
+          const link = document.createElement("a");
+          link.classList.add("book-card");
+          link.href =
+            book.volumeInfo.infoLink ||
+            book.volumeInfo.previewLink ||
+            "#";
+
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+
+          link.innerHTML = `
+            <img src="${img}" alt="${title}">
+            <h3>${title}</h3>
+            <p>${authors}</p>
+          `;
+
+          resultsDiv.appendChild(link);
+        });
+
+      } catch (err) {
+        console.error(err);
+        resultsDiv.innerHTML = "<p>Error loading audiobooks.</p>";
+      }
+    });
+  }
+
+});

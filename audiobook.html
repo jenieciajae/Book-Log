@@ -31,54 +31,45 @@
   </div>
 </header>
 	<div id="container">
-	<section class="lugrasimo-regular">
-		<h2>Reading Ambiance 🎧</h2>
-		<audio controls>
-		<source src="media/reading-ambience.mp3" type="audio/mpeg">
-		Your browser does not support audio.
-		</audio>
-	</section>
-		
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/jIIJz6lHLTQ?si=byVP1fnMJ7JYwP-1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		<iframe width="560" height="315" src="https://www.youtube.com/embed/PhDdPBf_do8?si=5Oj8LxIKtGQC1b_X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		
-		<section class="lugrasimo-regular">
-</section>
-	
+  <div class="main-content">
 
+    <!-- SEARCH -->
+    <form id="audioSearchForm" class="form-section">
+      <input type="text" id="audioSearchInput" placeholder="Search audiobooks or authors">
+      <button type="submit" class="form-btn">Search</button>
+    </form>
 
-<script>
-const canvas = document.getElementById("bookCanvas");
-const ctx = canvas.getContext("2d");
+    <!-- RESULTS -->
+    <div id="audioResults" class="book-container"></div>
 
-ctx.fillStyle = "#FFB6C1";
-ctx.fillRect(60,30,80,100);
-ctx.fillStyle = "#ff9bb3";
-ctx.fillRect(50,30,10,100);
+    <!-- OPTIONAL CURATED SECTION -->
+    <section class="lugrasimo-regular">
+      <h2>🌙 More Ways to Listen</h2>
 
-ctx.strokeStyle = "black";
-ctx.lineWidth = 2;
-ctx.strokeRect(60,30,80,100);
-ctx.strokeStyle = "#666";
+      <div class="book-container curated-container">
+        <a class="book-card curated-card" href="https://www.audible.com/" target="_blank">
+          <img src="images/audible.png" alt="audile logo">
+          <h3>Try Audible</h3>
+          <p>Popular audiobooks</p>
+        </a>
 
-ctx.beginPath();
-ctx.moveTo(70,50);
-ctx.lineTo(130,50);
+        <a class="book-card curated-card" href="https://www.youtube.com/results?search_query=audiobook" target="_blank">
+          <img src="images/youtube.jpg" alt="youtube logo">
+          <h3>YouTube Audiobooks</h3>
+          <p>Free listens</p>
+        </a>
+		  
+		 <a class="book-card curated-card" href="https://librivox.org/" target="_blank">
+  			<img src="images/librivox.png" alt="LibriVox">
+  			<h3>LibriVox</h3>
+  			<p>Free public domain audiobooks</p>
+		 </a>
 
-ctx.moveTo(70,70);
-ctx.lineTo(130,70);
+      </div>
+    </section>
 
-ctx.moveTo(70,90);
-ctx.lineTo(130,90);
-
-ctx.stroke();
-
-ctx.fillStyle = "black";
-ctx.font = "14px serif";
-ctx.fillText("BOOK",85,115);
-
-</script>
-	</div>
+  </div>
+</div>
 	<footer class="site-footer">
   <div class="footer-container">
     <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
