@@ -55,11 +55,17 @@ body {
 }
 
 .nav-menu {
-  list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 15px;
+  list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .nav-menu li a {
@@ -494,42 +500,75 @@ header {
 
 /* Mobile   */
 @media (max-width: 768px) {
+
+  /* GENERAL */
   body {
     font-size: 16px;
-    padding: 10px;
-  }
-	
-	.book-container {
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-  .book-flex {
-    justify-content: center;
-    
-    gap: 20px;
+    padding: 0;
   }
 
+  #container {
+    padding: 15px;
+  }
 
+  /* NAV (HAMBURGER SYSTEM) */
   nav ul {
-    flex-direction: row; 
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    display: none; 
+  }
+
+  nav ul.active {
+    display: flex; 
+  }
+
+  nav ul li {
+    width: 100%;
   }
 
   nav ul li a {
+    display: block;
     width: 100%;
     text-align: center;
+    padding: 10px;
   }
 
-  
-  .review th, .review td {
+  .hamburger {
+    display: block;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* BOOK GRID */
+  .book-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .book-flex {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* reviews page */
+  .review th,
+  .review td {
     font-size: 0.85rem;
     padding: 8px;
   }
 
- 
-  .hero-section, .page-hero {
-    padding: 30px 15px;
+  /* HERO SECTIONS */
+  .hero-section,
+  .page-hero {
+    padding: 25px 15px;
   }
 
   .hero-section h1 {
@@ -539,6 +578,20 @@ header {
   .page-hero h1 {
     font-size: 1.75rem;
   }
+
+  /* STATS / CARDS */
+  .goal-section {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+  }
+
+  /* CHART */
+  .chart-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 
   /* Footer adjustments */
   .site-footer {

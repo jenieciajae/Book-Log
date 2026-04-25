@@ -180,3 +180,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (booksEl) booksEl.textContent = getBooksRead();
 
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("navMenu");
+  const navLinks = document.querySelectorAll("#navMenu a");
+
+  // toggle menu open/close when hamburger is clicked
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+  }
+
+  // close menu
+  navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+      navMenu.classList.remove("active");
+    });
+  });
+
+});
