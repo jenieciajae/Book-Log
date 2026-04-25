@@ -271,6 +271,11 @@ header {
   margin: 0;
 }
 
+.recommendBook h2{
+ color: #ff4d9e;
+  margin-bottom: 15px;
+}
+
 /* table/ review tab */
 .table-scroll {
   max-height: 500px;
