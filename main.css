@@ -318,7 +318,7 @@ header {
   line-height: 1.4;
 }
 
-/* goals page */
+/* stats page */
 .goal-section {
   width: 100%;
   background: #fff5f7;
@@ -360,7 +360,13 @@ header {
   color: #333;
   line-height: 1.5;
 }
+.chart-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto 0;
+}
 
+/*about section*/
 .about-section {
   width: 100%;
   justify-content: center;

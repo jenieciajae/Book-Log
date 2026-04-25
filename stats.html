@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>audiobook</title>
+<title>stats</title>
 	<link rel="stylesheet" href="main.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<header>
+<header>
   <nav class="navbar">
     <div class="nav-container">
       <a href="#" class="logo">Jeniecia's Book Log</a>
@@ -27,49 +27,68 @@
   </nav>
 	  
 	  <div class="page-hero">
-    <h1>Audiobooks &#128266;</h1>
+    <h1>2026 Reading Stats</h1>
   </div>
 </header>
-	<div id="container">
-  <div class="main-content">
+	
+<div id="container">
+  <div class="goal-section">
+  <h2>Books Read</h2>
 
-    <!-- SEARCH -->
-    <form id="audioSearchForm" class="form-section">
-      <input type="text" id="audioSearchInput" placeholder="Search audiobooks or authors">
-      <button type="submit" class="form-btn">Search</button>
-    </form>
+  <ul>
+    <li>Total books read: <strong id="booksRead"></strong></li>
+    <li>Books remaining: <strong>18</strong></li>
+    <li>Completion: <strong>28%</strong></li>
+  </ul>
 
-    <!-- RESULTS -->
-    <div id="audioResults" class="book-container"></div>
-
-    <section>
-      <h2>🌙 More Ways to Listen</h2>
-
-      <div class="book-container curated-container">
-        <a class="book-card curated-card" href="https://www.audible.com/" target="_blank">
-          <img src="images/audible.png" alt="audile logo">
-          <h3>Try Audible</h3>
-          <p>Popular audiobooks</p>
-        </a>
-
-        <a class="book-card curated-card" href="https://www.youtube.com/results?search_query=audiobook" target="_blank">
-          <img src="images/youtube.jpg" alt="youtube logo">
-          <h3>YouTube Audiobooks</h3>
-          <p>Free listens</p>
-        </a>
-		  
-		 <a class="book-card curated-card" href="https://librivox.org/" target="_blank">
-  			<img src="images/librivox.png" alt="LibriVox">
-  			<h3>LibriVox</h3>
-  			<p>Free public domain audiobooks</p>
-		 </a>
-
-      </div>
-    </section>
-
+  <div class="chart-container">
+    <canvas id="readingChart"></canvas>
   </div>
 </div>
-	<footer class="site-footer">
+
+  <div class="goal-section">
+    <h2>Average Rating</h2>
+    <ul>
+      <li>Average rating: <strong id="avgRating"></strong> / 10</li>
+      <li>Highest Rated: <strong>The Metamorphosis</strong></li>
+      <li>Favorite genre: <strong>Literary Fiction</strong></li>
+    </ul>
+  </div>
+
+  <div class="goal-section">
+    <h2>Monthly Favorite</h2>
+<ul>
+  <li>January: <strong>Men Who Hate Women</strong></li>
+  <li>February: <strong>Book Lovers</strong></li>
+  <li>March: <strong>The Metamorphosis</strong></li>
+</ul>
+  </div>
+
+</div>
+	
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const ctx = document.getElementById('readingChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+      datasets: [{
+        label: 'Books Read',
+        data: [1, 3, 3, 0],
+      }]
+    }
+  });
+});
+</script>
+
+
+	
+<footer class="site-footer">
   <div class="footer-container">
     <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
 
@@ -89,6 +108,5 @@
     </div>
   </div>
 </footer>
-	<script src="script.js"></script>
 </body>
 </html>

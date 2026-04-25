@@ -146,3 +146,35 @@ const form = document.getElementById("audioSearchForm");
   }
 
 });
+
+// Book data for stats 
+const books = [
+  { title: "Men Who Hate Women", rating: 9 },
+  { title: "Book Lovers", rating: 8.8 },
+  { title: "Notes from Underground", rating: 7.5 },
+  { title: "The Bell Jar", rating: 9 },
+  { title: "The Perks of Being a Wallflower", rating: 8.5 },
+  { title: "The End of White World Supremacy", rating: 6.5 },
+  { title: "The Metamorphosis", rating: 9.5 }
+];
+
+// Stats functions
+function getAverageRating() {
+  const total = books.reduce((sum, book) => sum + book.rating, 0);
+  return (total / books.length).toFixed(1);
+}
+
+function getBooksRead() {
+  return books.length;
+}
+
+// Stats render
+document.addEventListener("DOMContentLoaded", function () {
+
+  const avgEl = document.getElementById("avgRating");
+  if (avgEl) avgEl.textContent = getAverageRating();
+
+  const booksEl = document.getElementById("booksRead");
+  if (booksEl) booksEl.textContent = getBooksRead();
+
+});
