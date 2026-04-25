@@ -500,8 +500,7 @@ header {
 
 /* Mobile   */
 @media (max-width: 768px) {
-
-  /* GENERAL */
+/* GENERAL */
   body {
     font-size: 16px;
     padding: 0;
@@ -511,34 +510,9 @@ header {
     padding: 15px;
   }
 
-  /* NAV (HAMBURGER SYSTEM) */
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    display: none; 
-  }
-
-  nav ul.active {
-    display: flex; 
-  }
-
-  nav ul li {
-    width: 100%;
-  }
-
-  nav ul li a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-  }
-
+  /* NAV */
   .hamburger {
     display: block;
-    font-size: 28px;
-    cursor: pointer;
   }
 
   .nav-container {
@@ -546,6 +520,31 @@ header {
     align-items: center;
   }
 
+  /* hidden by default */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* shown when clicked */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-menu li a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+	
   /* BOOK GRID */
   .book-container {
     display: grid;
@@ -558,14 +557,14 @@ header {
     gap: 20px;
   }
 
-  /* reviews page */
+  /* TABLE */
   .review th,
   .review td {
     font-size: 0.85rem;
     padding: 8px;
   }
 
-  /* HERO SECTIONS */
+  /* HERO */
   .hero-section,
   .page-hero {
     padding: 25px 15px;
@@ -579,20 +578,18 @@ header {
     font-size: 1.75rem;
   }
 
-  /* STATS / CARDS */
+  /* STATS */
   .goal-section {
     width: 100%;
     margin-bottom: 15px;
     padding: 15px;
   }
 
-  /* CHART */
+  /*  CHART */
   .chart-container {
     width: 100%;
-    max-width: 100%;
   }
 }
-
   /* Footer adjustments */
   .site-footer {
     padding: 30px 15px;
