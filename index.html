@@ -115,18 +115,42 @@
 
 
 
-<script src="script.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 
 <script>
 $(function() {
+
+  function enableSortable() {
     $(".sortable").sortable({
-		items: ".book-section"
-	});
+      items: ".book-section"
+    });
+  }
+
+  function disableSortable() {
+    if ($(".sortable").data("ui-sortable")) {
+      $(".sortable").sortable("destroy");
+    }
+  }
+
+  function handleSortable() {
+    if (window.innerWidth > 768) {
+      enableSortable();
+    } else {
+      disableSortable();
+    }
+  }
+
+  handleSortable();
+
+  $(window).on("resize", function () {
+    handleSortable();
+  });
+
 });
 </script>
 
+<script src="script.js"></script>
 	</div>
 	<footer class="site-footer">
   <div class="footer-container">
