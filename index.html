@@ -1,177 +1,231 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Log</title>
+
+<title>Jeniecia's Book Log</title>
 
 <link rel="stylesheet" href="main.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Lugrasimo&family=Meddon&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
 </head>
+
 <body>
+
 <header>
-  <nav class="navbar">
+
+<nav class="navbar">
   <div class="nav-container">
 
-    <a href="index.html" class="logo">Jeniecia's Book Log</a>
+    <a href="index.html" class="logo">Book Log</a>
 
     <div class="hamburger" id="hamburger">☰</div>
 
     <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="search.html">Search a Book</a></li>
-      <li><a href="stats.html">Stats</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="audiobook.html">Audiobook</a></li>
-      <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
+		<li><a href="search.html">Search</a></li>
+		<li><a href="reviews.html">Reviews</a></li>
     </ul>
 
   </div>
 </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Jeniecia's Book Log</h1>
-      <p>A personal space for my books and reviews. Browse related titles or suggest a book I might enjoy through the menu above!</p>
-    </div>
-  </section>
+
+<!-- Hero Section -->
+
+<section class="hero-section">
+
+  <div class="hero-content">
+
+    <h1>Jeniecia's Book Log</h1>
+	 <p class="hero-subtitle">Your personal digital library</p>
+
+    <p class="hero-description">
+      Track your reading, organize your library, and review your favorite books.
+    </p>
+
+    <a href="search.html" class="hero-btn">Search Books</a>
+
+  </div>
+
+</section>
+
 </header>
-<div id="container">
-  <div class="main-content sortable">
 
-  
-    <div class="book-section reading">
-      <h3>Reading</h3>
-      <div class="read-scroll-wrapper">
-        <div class="book-flex">
-          <a href="https://www.barnesandnoble.com/w/white-nights-fyodor-dostoyevsky/1020605626?ean=9781804471616" target="_blank">
-            <img src="images/whitenights.jpg" alt="White Nights book">
-          </a>
-          <a href="https://www.target.com/p/i-want-to-die-but-i-want-to-eat-tteokbokki-by-baek-sehee-paperback/-/A-89674917" target="_blank">
-            <img src="images/wanttoeat.jpg" alt="I Want to Die But I Want to Eat Tteokbokki book">
-          </a>
-        </div>
-        
-      </div>
+<!-- Reading Insights -->
+
+<section class="reading-stats">
+
+  <div class="stats-header">
+    <h2>Reading Insights</h2>
+    <p>Track your reading progress and discover your habits.</p>
+  </div>
+
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <h3 id="booksRead">0</h3>
+      <p>Books Read</p>
+
     </div>
 
-    <div class="book-section to-be-read">
-      <h3>To Be Read</h3>
-      <div class="read-scroll-wrapper">
-        <div class="book-flex">
-          <a href="https://www.amazon.com/Who-Have-Never-Known-Men-ebook/dp/B07L6XBVSQ" target="_blank">
-            <img src="images/Iwhnkm.jpg" alt="I Who Have Never Known Men book">
-          </a>
-          <a href="https://www.barnesandnoble.com/w/before-the-coffee-gets-cold-toshikazu-kawaguchi/1136277012" target="_blank">
-            <img src="images/before.jpg" alt="Before the Coffee Gets Cold book">
-          </a>
-          <a href="https://www.barnesandnoble.com/w/pride-and-prejudice-jane-austen/1106658784" target="_blank">
-            <img src="images/pride.jpg" alt="Pride and Prejudice book">
-          </a>
-        </div>
-      </div>
+
+    <div class="stat-card">
+
+      <h3 id="avgRating">0</h3>
+      <p>Average Rating</p>
+
     </div>
 
-    
-    <div class="book-section read">
-      <h3>Read</h3>
-      <div class="read-scroll-wrapper">
-        <div class="book-flex">
-          <a href="https://www.amazon.com/Men-Who-Hate-Women-misogyny/dp/1398504653" target="_blank">
-            <img src="images/mwhw.jpg" alt="Men Who Hate Women book">
-          </a>
-          <a href="https://www.amazon.com/Book-Lovers-Emily-Henry/dp/0593334833" target="_blank">
-            <img src="images/booklovers.jpg" alt="Book Lovers book">
-          </a>
-          <a href="https://www.barnesandnoble.com/w/notes-from-underground-fyodor-dostoevsky/1100272106" target="_blank">
-            <img src="images/notes.jpg" alt="Notes from Underground book">
-          </a>
-          <a href="https://www.barnesandnoble.com/w/the-bell-jar-sylvia-plath/1100550703?ean=9780060837020" target="_blank">
-            <img src="images/belljar.jpg" alt="The Bell Jar book">
-          </a>
-          <a href="https://www.amazon.com/Perks-Being-Wallflower-Stephen-Chbosky/dp/0671027344" target="_blank">
-            <img src="media/perks.jpg" alt="The Perks of Being a Wallflower book">
-          </a>
-          <a href="https://www.amazon.com/End-White-World-Supremacy-Speeches-ebook/dp/B01MTDWZ1F" target="_blank">
-            <img src="images/malcolm.jpg" alt="The End of White World Supremacy book">
-          </a>
-          <a href="https://www.barnesandnoble.com/w/the-metamorphosis-franz-kafka/1116615522" target="_blank">
-            <img src="images/meta.jpg" alt="The Metamorphosis book">
-          </a>
-        </div>        
-      </div>
+
+    <div class="stat-card">
+
+      <h3 id="currentlyReading">0</h3>
+      <p>Currently Reading</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <h3 id="wantToRead">0</h3>
+      <p>Want to Read</p>
+
     </div>
 
   </div>
 
+</section>
+
+<div id="library" class="container">
+
+<div class="library-header">
+	<h2>My Reading Library</h2>
+	<p>
+		Keep track of books you're reading, books you want to read,
+		and books you've finished.
+	</p>
+</div>
+	
+
+	
+<div class="main-content">
 
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<!-- Currently Reading -->
 
-<script>
-$(function() {
+<div id="readingBooks" class="book-section reading">
 
-  function enableSortable() {
-    $(".sortable").sortable({
-      items: ".book-section"
-    });
-  }
+  <div class="section-header">
 
-  function disableSortable() {
-    if ($(".sortable").data("ui-sortable")) {
-      $(".sortable").sortable("destroy");
-    }
-  }
+    <h3>Currently Reading</h3>
 
-  function handleSortable() {
-    if (window.innerWidth > 768) {
-      enableSortable();
-    } else {
-      disableSortable();
-    }
-  }
+  </div>
 
-  handleSortable();
 
-  $(window).on("resize", function () {
-    handleSortable();
-  });
+  <div class="read-scroll-wrapper">
 
-});
-</script>
+    <div class="book-flex" id="readingContainer"></div>
+
+  </div>
+
+</div>
+
+
+
+<!-- Want to Read -->
+
+<div id="wantBooks" class="book-section to-be-read">
+
+  <div class="section-header">
+
+    <h3>Want to Read</h3>
+
+  </div>
+
+
+  <div class="read-scroll-wrapper">
+
+    <div class="book-flex" id="wantContainer"></div>
+  </div>
+
+</div>
+
+
+
+
+<!-- Finished Reading -->
+
+<div id="finishedBooks" class="book-section read">
+
+  <div class="section-header">
+
+    <h3>Finished Reading</h3>
+
+  </div>
+
+
+  <div class="read-scroll-wrapper">
+
+    <div class="book-flex" id="finishedContainer"></div>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
 
 <script src="script.js"></script>
-	</div>
-	<footer class="site-footer">
-  <div class="footer-container">
-    <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
 
-    <div class="footer-links">
-      <a href="index.html">Books</a>
-      <a href="search.html">Search a Book</a>
-      <a href="about.html">About</a>
-      <a href="reviews.html">Reviews</a>
-    </div>
 
-    <p>Follow me on social media!</p>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/jeniecia.jaee/?hl=en" target="_blank">
-		  <img src="images/instagram.jpg" alt="Instagram"></a>
-      <a href="https://www.facebook.com/share/1BwZPVi3dF/?mibextid=wwXIfr" target="_blank">
-		  <img src="images/facebook.jpg" alt="Facebook"></a>
-    </div>
-  </div>
+
+<footer class="site-footer">
+
+<div class="footer-container">
+
+<p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
+
+
+<div class="footer-links">
+	<a href="index.html">Home</a>
+	<a href="search.html">Search</a>
+	<a href="reviews.html">Reviews</a>
+</div>
+
+
+<p>Follow me on social media!</p>
+
+
+<div class="social-icons">
+
+<a href="https://www.instagram.com/jeniecia.jaee/?hl=en" target="_blank">
+<img src="images/instagram.jpg" alt="Instagram">
+</a>
+
+
+<a href="https://www.facebook.com/share/1BwZPVi3dF/?mibextid=wwXIfr" target="_blank">
+<img src="images/facebook.jpg" alt="Facebook">
+</a>
+
+
+</div>
+
+
+</div>
+
 </footer>
-	
+
+
+</div>
+
 </body>
 </html>

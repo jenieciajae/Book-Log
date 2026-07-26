@@ -3,76 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search a Book</title>
+  <title>Discover Books</title>
   <link rel="stylesheet" href="main.css">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header>
-  <nav class="navbar">
+
+<nav class="navbar">
   <div class="nav-container">
 
-    <a href="index.html" class="logo">Jeniecia's Book Log</a>
+    <a href="index.html" class="logo">
+      Book Log
+    </a>
 
-    <div class="hamburger" id="hamburger">☰</div>
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
 
     <ul class="nav-menu" id="navMenu">
+
       <li><a href="index.html">Home</a></li>
-      <li><a href="search.html">Search a Book</a></li>
-      <li><a href="stats.html">Stats</a></li>
+      <li><a href="search.html">Search</a></li>
       <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="audiobook.html">Audiobook</a></li>
-      <li><a href="about.html">About</a></li>
+
     </ul>
 
   </div>
 </nav>
-	  
-	  <div class="page-hero">
-    <h1>Search a Book</h1>
-  </div>
+
+
+<section class="discovery-card">
+
+  <h1>Discover Books</h1>
+
+  <p>
+    Search for new reads and add them to your personal library.
+  </p>
+
+</section>
+
 </header>
 
-  <div id="container">
+  <div class="container">
   <div class="main-content">
-    <form id="searchForm" class="form-section">
-      <input type="text" id="searchInput" placeholder="Enter book title or author">
-      <button type="submit" class="form-btn">Search</button>
-		
-    </form>
-	<div id="searchResults" class="book-container"></div>
-	  
-<div class="recommendBook">
-	<h2>Recommend  a Book</h2>
-<section class="form-section">
-<form>
-<label>Book Title:</label><br>
-<input type="text" name="title"><br><br>
+    <section class="search-section">
 
-<label>Author:</label><br>
-<input type="text" name="author"><br><br>
+<h2>Find Your Next Read</h2>
 
-<label>How did you read it?</label><br>
-<input type="radio" name="format" value="physical"> Physical Book<br>
-<input type="radio" name="format" value="ebook"> Ebook<br>
-<input type="radio" name="format" value="audio"> Audiobook<br><br>
+<p>
+Search by title, author, or keyword to discover new books.
+</p>
 
-<label>What genres apply?</label><br>
-<input type="checkbox" name="genre" value="fiction">
- Fiction
-<input type="checkbox" name="genre" value="nonfiction"> 
-Non-fiction<br>
-<input type="checkbox" name="genre" value="classic"> Classic<br>
-<input type="checkbox" name="genre" value="romance"> Romance<br><br>
+<form id="searchForm" class="form-section">
 
+<input 
+type="text" 
+id="searchInput" 
+placeholder="Search by title or author">
 
-<label>Rating:</label><br>
-<input type="text" name="rating" placeholder="Example: 8/10"><br><br>
-<input type="submit" value="Submit Book" class="form-btn">
+<button type="submit" class="form-btn">
+Search
+</button>
+
 </form>
+
+
+<div id="searchResults" class="book-container"></div>
+
+
 </section>
-	</div>
+	  
+
+
+	
 
   </div>
 </div>
@@ -82,12 +87,11 @@ Non-fiction<br>
   <div class="footer-container">
     <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
 
-    <div class="footer-links">
-      <a href="index.html">Books</a>
-      <a href="search.html">Search a Book</a>
-      <a href="about.html">About</a>
-      <a href="reviews.html">Reviews</a>
-    </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+	<a href="search.html">Search</a>
+	<a href="reviews.html">Reviews</a>
+</div>
 
     <p>Follow me on social media!</p>
     <div class="social-icons">

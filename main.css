@@ -6,17 +6,42 @@
 }
 
 body {
-  background: linear-gradient(135deg, #ffd9e2, #fff0f5);
+  background: linear-gradient(180deg, #FFF8FC 0%, #FFEAF2 100%);
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   padding: 10px;
   color: #333;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
 
+
+/*Library Header*/
+.library-header {
+  text-align:center;
+  width:100%;
+  margin-bottom:20px;
+}
+
+.library-header h2 {
+  font-family:'Baloo 2', cursive;
+  color:#6b4c9a;
+  font-size:2.2rem;
+}
+
+.library-header p {
+  color:#555;
+}
+
+
+
+
+
 /* Container */
-#container {
+.container {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
   width:100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -79,42 +104,226 @@ body {
   color: #ff7c88;
 }
 
+.discovery-card {
+  background:#fff5f7;
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  margin-bottom:30px;
+}
+
 /* --- Hero Section --- */
+.hero-content{
+    max-width:700px;
+    margin:auto;
+}
+
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 400px;
+  min-height: 500px;
   background: linear-gradient(135deg, #fce4ec, #fff3e0);
-  padding: 0 20px;
+  padding: 80px 20px;
 }
 
 .hero-content h1 {
   font-family: 'Baloo 2', cursive;
-  font-size: 3rem;
+  font-size: clamp(3rem,6vw,4.5rem);
+  line-height:1.1;
   color: #6b4c9a;
   margin-bottom: 15px;
+	
 }
 
-.hero-content p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.25rem;
-  color: #444;
+.hero-description{
+    font-size:1.2rem;
+    max-width:600px;
+    margin:20px auto 35px;
+    line-height:1.8;
+    color:#555;
 }
 
-.page-hero {
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 30px;
+    background:#6B4C9A;
+    color:white;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s ease;
+}
+.hero-btn:hover{
+    transform:translateY(-3px);
+    background:#805FC0;
+    box-shadow:0 12px 25px rgba(107,76,154,.25);
+}
+/* ==============================
+   Reading Insights
+============================== */
+
+.reading-stats {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
   text-align: center;
-  padding: 50px 20px;
-  background: linear-gradient(135deg, #fce4ec, #fff3e0);
 }
 
-.page-hero h1 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 2.5rem;
+.stats-header h2 {
+  font-family: "Baloo 2", cursive;
   color: #6b4c9a;
-  margin: 0;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
 }
+
+.stats-header p {
+  color: #555;
+  margin-bottom: 30px;
+}
+
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+
+.stat-card {
+  background: #fff5f7;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+
+.stat-card h3 {
+  font-family: "Baloo 2", cursive;
+  color: #6b4c9a;
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+
+.stat-card p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.add-book-section{
+
+background:#fff5f7;
+padding:25px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+.book-actions {
+  margin-top: 12px;
+}
+
+.book-status {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+.add-book-section form{
+
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+
+}
+
+
+.add-book-section input,
+.add-book-section select{
+
+padding:12px;
+border-radius:12px;
+border:1px solid #ffc0cb;
+
+}
+
+
+
+/* ==============================
+   Library Book Cards
+============================== */
+
+.added-book {
+  width: 150px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,.1);
+  transition: transform .3s ease;
+}
+
+
+.added-book:hover {
+  transform: translateY(-5px);
+}
+
+
+.added-book img {
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+.added-book h4 {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #6b4c9a;
+}
+
+
+.added-book p {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+.edit-btn{
+background:#174d2c;
+color:white;
+}
+
+.delete-btn{
+background:#ea9ba1;
+color:white;
+}
+.library-buttons button {
+
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: .8rem;
+  transition: .3s ease;
+
+}
+
+
+.library-buttons button:hover {
+
+  transform: translateY(-2px);
+}
+
 
 /*Headers*/
 header {
@@ -166,6 +375,24 @@ header {
   box-shadow: 0 5px 12px rgba(0,0,0,0.2);
 }
 
+
+/*Review-header*/
+.review-header {
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.review-header h2 {
+  font-family:'Baloo 2', cursive;
+  color:#6b4c9a;
+  font-size:2rem;
+}
+
+.review-header p {
+  color:#555;
+}
+
+
 /* Books- homepage */
 .read-scroll-wrapper {
   display: flex;
@@ -182,26 +409,29 @@ header {
   border-radius: 20px;
   padding: 15px;
   background: #fff5f7;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
   flex: 0 0 auto;
 }
 
 .book-section h3 {
-  color: #ff4d9e;
-  margin-bottom: 10px;
+  font-family: "Baloo 2", cursive;
+  color: #6b4c9a;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
 }
 
 .book-flex {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; 
-  padding: 10px 0;
+  flex-wrap: wrap;
+  padding: 15px 5px;
+  justify-content: flex-start;
 }
 
 .book-flex a {
   flex: 0 1 auto; 
-  width: 60px;
-  height: 90px;
+  width: 90px;
+  height: 135px;
 }
 
 .book-flex a img {
@@ -212,7 +442,8 @@ header {
 }
 
 .book-flex a img:hover {
-  transform: scale(1.1);
+  transform:translateY(-8px) scale(1.05);
+  box-shadow:0 15px 30px rgba(0,0,0,.2);
 }
 
 
@@ -372,6 +603,48 @@ header {
   margin: 20px auto 0;
 }
 
+/* ==============================
+   Search Page
+============================== */
+
+.search-section {
+  text-align: center;
+  width: 100%;
+}
+
+
+.search-section h2 {
+  font-family: "Baloo 2", cursive;
+  color: #6b4c9a;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+
+.search-section p {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+
+.form-section {
+  justify-content: center;
+}
+
+
+.form-section input {
+  max-width: 500px;
+  width: 100%;
+}
+
+
+.book-container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
 /*about section*/
 .about-section {
   width: 100%;
@@ -391,34 +664,171 @@ header {
   font-size: 1rem;
 }
 
-/*Audiobook*/
-.curated-card {
-  width: 140px;
-  flex: 0 0 auto;
-  text-align: center;
+/* ==========================================
+   Reviews Page
+========================================== */
+
+
+.reviews-grid {
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:25px;
+  margin-top:20px;
+
 }
 
-.curated-card img {
-  width: 100%;
-  height: 120px;
-  overflow: hidden;
-  border-radius: 12px;
+
+
+.review-card {
+
+  background:#fff5f7;
+  border-radius:25px;
+  padding:25px;
+
+  box-shadow:
+  0 10px 25px rgba(0,0,0,.08);
+
+  transition:.3s ease;
+
 }
 
-.curated-card h3 {
-  font-size: 13px;
+
+
+.review-card:hover {
+
+  transform:translateY(-5px);
+
+  box-shadow:
+  0 15px 30px rgba(0,0,0,.12);
+
 }
 
-.curated-card p {
-   font-size: 11px;
+
+
+.review-card h3 {
+
+  font-family:'Baloo 2', cursive;
+
+  color:#6b4c9a;
+
+  font-size:1.5rem;
+
+  margin-bottom:8px;
+
 }
 
-.curated-container {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
+
+
+.review-card strong {
+
+  display:inline-block;
+
+  background:#ffb6c1;
+
+  color:white;
+
+  padding:6px 14px;
+
+  border-radius:20px;
+
+  margin:10px 0;
+
 }
 
+
+
+.review-card p {
+
+  color:#555;
+
+  line-height:1.6;
+
+}
+
+
+
+/* Review Sections */
+
+.my-reviews,
+.write-review,
+.community-reviews {
+
+  background:#fffafc;
+
+  border-radius:25px;
+
+  padding:30px;
+
+  margin-bottom:30px;
+
+}
+
+
+
+.my-reviews h2,
+.write-review h2,
+.community-reviews h2 {
+
+  font-family:'Baloo 2', cursive;
+
+  color:#6b4c9a;
+
+  font-size:2rem;
+
+  margin-bottom:15px;
+
+}
+
+
+
+/* Review Form */
+
+#reviewForm {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:15px;
+
+}
+
+
+
+#reviewForm input,
+#reviewForm select,
+#reviewForm textarea {
+  padding:14px;
+  border-radius:15px;
+  border:1px solid #ffc0cb;
+  font-family:'Poppins', sans-serif;
+}
+
+
+
+#reviewForm textarea {
+
+  min-height:150px;
+
+  resize:vertical;
+
+}
+
+
+
+#reviewForm input:focus,
+#reviewForm select:focus,
+#reviewForm textarea:focus {
+
+
+  outline:none;
+
+  border-color:#6b4c9a;
+
+  box-shadow:0 0 8px rgba(107,76,154,.25);
+
+}
 
 /* footer */
 .site-footer {
@@ -428,7 +838,9 @@ header {
   font-family: 'Poppins', sans-serif;
   color: #444;
   border-top: 1px solid #f0d9e5;
+  margin-top:auto;
 }
+
 
 .footer-container {
   max-width: 1200px;
@@ -471,7 +883,7 @@ header {
 
 /* responsive */
 @media (max-width: 1024px) {
-  #container {
+  .container {
     flex-direction: column;
     
   }
@@ -485,7 +897,7 @@ header {
     width: 100%;
   }
 
-  .hero-section, .page-hero {
+  .hero-section{
     padding: 40px 20px;
   }
 
@@ -493,9 +905,6 @@ header {
     font-size: 2.5rem;
   }
 
-  .page-hero h1 {
-    font-size: 2rem;
-  }
 }
 
 /* Mobile   */
@@ -506,7 +915,7 @@ header {
     padding: 0;
   }
 
-  #container {
+  .container {
     padding: 15px;
   }
 
@@ -565,8 +974,7 @@ header {
   }
 
   /* HERO */
-  .hero-section,
-  .page-hero {
+  .hero-section{
     padding: 25px 15px;
   }
 
@@ -574,9 +982,6 @@ header {
     font-size: 2rem;
   }
 
-  .page-hero h1 {
-    font-size: 1.75rem;
-  }
 
   /* STATS */
   .goal-section {

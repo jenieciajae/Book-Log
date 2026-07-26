@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>stats</title>
+<title>Reading Insights</title>
 	<link rel="stylesheet" href="main.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,29 +22,27 @@
 
     <ul class="nav-menu" id="navMenu">
       <li><a href="index.html">Home</a></li>
-      <li><a href="search.html">Search a Book</a></li>
-      <li><a href="stats.html">Stats</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="audiobook.html">Audiobook</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="search.html">Discover Books</a></li>
+	  <li><a href="stats.html">Reading Insights</a></li>
+	  <li><a href="reviews.html">Reviews &amp; Ratings</a></li>
     </ul>
 
   </div>
 </nav>
 	  
 	  <div class="page-hero">
-    <h1>2026 Reading Stats</h1>
+    <h1>Reading Insights</h1>
   </div>
 </header>
 	
-<div id="container">
+<div class="container">
   <div class="goal-section">
-  <h2>Books Read</h2>
+  <h2>Reading Progress</h2>
 
   <ul>
-    <li>Total books read: <strong id="booksRead"></strong></li>
-    <li>Books remaining: <strong>18</strong></li>
-    <li>Completion: <strong>28%</strong></li>
+    <li>Books completed: <strong id="booksRead"></strong></li>
+	<li>Reading goal remaining: <strong>18</strong></li>
+	<li>Goal completion: <strong>28%</strong></li>
   </ul>
 
   <div class="chart-container">
@@ -56,13 +54,13 @@
     <h2>Average Rating</h2>
     <ul>
       <li>Average rating: <strong id="avgRating"></strong> / 10</li>
-      <li>Highest Rated: <strong>The Metamorphosis</strong></li>
-      <li>Favorite genre: <strong>Literary Fiction</strong></li>
+      <li>Highest Rated Book: <strong>The Metamorphosis</strong></li>
+	  <li>Favorite Genre: <strong>Literary Fiction</strong></li>
     </ul>
   </div>
 
   <div class="goal-section">
-    <h2>Monthly Favorite</h2>
+    <h2>Favorite Reads</h2>
 <ul>
   <li>January: <strong>Men Who Hate Women</strong></li>
   <li>February: <strong>Book Lovers</strong></li>
@@ -99,11 +97,12 @@ document.addEventListener("DOMContentLoaded", function () {
     <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>
 
     <div class="footer-links">
-      <a href="index.html">Books</a>
-      <a href="search.html">Search a Book</a>
-      <a href="about.html">About</a>
-      <a href="reviews.html">Reviews</a>
-    </div>
+  <a href="index.html">Library</a>
+  <a href="search.html">Discover Books</a>
+  <a href="stats.html">Reading Insights</a>
+  <a href="reviews.html">Reviews &amp; Ratings</a>
+  <a href="about.html">About</a>
+</div>
 
     <p>Follow me on social media!</p>
     <div class="social-icons">
