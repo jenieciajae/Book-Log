@@ -25,6 +25,29 @@ const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM";
 let books = JSON.parse(localStorage.getItem("books")) || [];
 
 // ==========================================
+// Featured Reviews
+// ==========================================
+
+const featuredReviews = [
+  {
+    title: "Men Who Hate Women",
+    rating: 9
+  },
+  {
+    title: "Book Lovers",
+    rating: 8.6
+  },
+  {
+    title: "Notes from Underground",
+    rating: 8.8
+  },
+  {
+    title: "The Bell Jar",
+    rating: 9
+  }
+];
+
+// ==========================================
 // Book Search
 // ==========================================
 
@@ -327,7 +350,7 @@ title: "Book Lovers",
 author: "Emily Henry",
 rating: 8.6,
 review:
-"A fun and thoughtful romance that balances humor, strong characters, and a genuine love for books."
+"Truly a book for book lovers about book lovers. One of my favorite romance books so far, just such a cute book! "
 },
 
 {
@@ -343,7 +366,7 @@ title: "The Metamorphosis",
 author: "Franz Kafka",
 rating: 9.5,
 review:
-"A haunting exploration of identity, isolation, and what it means to be understood."
+"A great story about identity and the pressure of being successful. Kafka demonstrates what happens when a person is reduced to what they can offer instead of who they are."
 }
 
 ];
@@ -517,31 +540,81 @@ form.reset();
 
 function loadStats() {
 
-  const statsBooks = [
-    { title: "Men Who Hate Women", rating: 9 },
-    { title: "Book Lovers", rating: 8.8 },
-    { title: "Notes from Underground", rating: 7.5 },
-    { title: "The Bell Jar", rating: 9 },
-    { title: "The Perks of Being a Wallflower", rating: 8.5 },
-    { title: "The End of White World Supremacy", rating: 6.5 },
-    { title: "The Metamorphosis", rating: 9.5 }
-  ];
+  const books =
+    JSON.parse(localStorage.getItem("books")) || [];
 
-  const avgRating = (
-    statsBooks.reduce((sum, book) => sum + book.rating, 0) /
-    statsBooks.length
-  ).toFixed(1);
+  const communityReviews =
+    JSON.parse(localStorage.getItem("communityReviews")) || [];
 
-  const avgEl = document.getElementById("avgRating");
-  const booksEl = document.getElementById("booksRead");
 
-  if (avgEl) {
-    avgEl.textContent = avgRating;
-  }
 
-  if (booksEl) {
-    booksEl.textContent = statsBooks.length;
-  }
+  const totalBooks = books.length;
+
+  const readingBooks =
+    books.filter(book => book.status === "reading").length;
+
+  const finishedBooks =
+    books.filter(book => book.status === "finished").length;
+
+  const wantBooks =
+    books.filter(book => book.status === "want").length;
+
+
+
+  let averageRating = "0.0";
+
+// Combine featured reviews + community reviews
+const allRatings = [
+
+  ...featuredReviews.map(review => Number(review.rating)),
+
+  ...communityReviews.map(review => Number(review.rating))
+
+];
+
+if (allRatings.length > 0) {
+
+  const total =
+    allRatings.reduce((sum, rating) => sum + rating, 0);
+
+  averageRating =
+    (total / allRatings.length).toFixed(1);
+
+}
+
+
+
+  const booksRead =
+    document.getElementById("booksRead");
+
+  const avgRating =
+    document.getElementById("avgRating");
+
+  const currentlyReading =
+    document.getElementById("currentlyReading");
+
+  const finished =
+    document.getElementById("finishedBooks");
+
+  const want =
+	document.getElementById("wantToRead");
+
+
+
+  if (booksRead)
+  	booksRead.textContent = finishedBooks;
+
+  if (avgRating)
+    avgRating.textContent = averageRating;
+
+  if (currentlyReading)
+    currentlyReading.textContent = readingBooks;
+
+  if (finished)
+    finished.textContent = finishedBooks;
+
+  if (want)
+    want.textContent = wantBooks;
 
 }
 
