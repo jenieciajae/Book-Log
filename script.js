@@ -5,17 +5,25 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-setupBookSearch();
-setupNavigation();
-loadStats();
-displayBooks();
+  console.log("Book Log Loaded");
 
-displayMyReviews();
-displayCommunityReviews();
-setupReviewForm();
+  setupBookSearch();
+
+  setupNavigation();
+
+  loadStats();
+
+  displayBooks();
+
+  displayMyReviews();
+
+  displayCommunityReviews();
+
+  setupReviewForm();
+
+  setupReviewSorting();
 
 });
-
 // ==========================================
 // Global Variables
 // ==========================================
@@ -24,6 +32,36 @@ const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM";
 
 let books = JSON.parse(localStorage.getItem("books")) || [];
 
+
+// ==========================================
+// Toast Notifications
+// ==========================================
+
+function showToast(message) {
+
+  const toast = document.createElement("div");
+
+  toast.className = "toast";
+
+  toast.textContent = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 10);
+
+  setTimeout(() => {
+
+    toast.classList.remove("show");
+
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+
+  }, 2500);
+
+}
 // ==========================================
 // Featured Reviews
 // ==========================================
@@ -70,7 +108,12 @@ async function searchBooks(e) {
     return;
   }
 
-  resultsDiv.innerHTML = "<p>Loading...</p>";
+  resultsDiv.innerHTML = `
+  <div class="spinner-container">
+    <div class="spinner"></div>
+    <p>Finding books...</p>
+  </div>
+`;
 
   try {
     const response = await fetch(
@@ -94,9 +137,19 @@ function displaySearchResults(items, container) {
   container.innerHTML = "";
 
   if (!items || items.length === 0) {
-    container.innerHTML = "<p>No books found.</p>";
-    return;
-  }
+
+  container.innerHTML = `
+    <div class="empty-search">
+      <h3>No Books Found</h3>
+      <p>
+        Try searching for a different title or author.
+      </p>
+    </div>
+  `;
+
+  return;
+
+}
 
   items.forEach((book) => {
     const title = book.volumeInfo.title || "Unknown Title";
@@ -169,14 +222,55 @@ function displayBooks() {
 
   if (!reading || !want || !finished) return;
 
-  // Clear current books
   reading.innerHTML = "";
   want.innerHTML = "";
   finished.innerHTML = "";
 
-  books.forEach((book, index) => {
+  displayBookSection(
+    books.filter(book => book.status === "reading"),
+    reading,
+    "📖 Nothing here yet",
+    "Start reading a book to see it here."
+  );
 
-    const bookCard = `
+  displayBookSection(
+    books.filter(book => book.status === "want"),
+    want,
+    "📚 Your TBR is empty",
+    "Search for books and add them to your library."
+  );
+
+  displayBookSection(
+    books.filter(book => book.status === "finished"),
+    finished,
+    "🎉 No finished books yet",
+    "Your completed books will appear here."
+  );
+
+}
+
+function displayBookSection(bookList, container, heading, message) {
+
+  // Show empty state if no books exist
+  if (bookList.length === 0) {
+
+    container.innerHTML = `
+      <div class="empty-library">
+        <h4>${heading}</h4>
+        <p>${message}</p>
+      </div>
+    `;
+
+    return;
+
+  }
+
+  // Display books
+  bookList.forEach(book => {
+
+    const index = books.indexOf(book);
+
+    container.innerHTML += `
       <div class="added-book">
 
         <img src="${book.cover}" alt="${book.title}">
@@ -204,25 +298,10 @@ function displayBooks() {
       </div>
     `;
 
-    switch (book.status) {
-
-      case "reading":
-        reading.innerHTML += bookCard;
-        break;
-
-      case "finished":
-        finished.innerHTML += bookCard;
-        break;
-
-      default:
-        want.innerHTML += bookCard;
-
-    }
-
   });
 
   // Delete buttons
-  document.querySelectorAll(".delete-btn").forEach((button) => {
+  container.querySelectorAll(".delete-btn").forEach((button) => {
 
     button.addEventListener("click", () => {
 
@@ -233,7 +312,7 @@ function displayBooks() {
   });
 
   // Edit buttons
-  document.querySelectorAll(".edit-btn").forEach((button) => {
+  container.querySelectorAll(".edit-btn").forEach((button) => {
 
     button.addEventListener("click", () => {
 
@@ -258,7 +337,7 @@ function addBookToLibrary(book) {
   );
 
   if (alreadyExists) {
-    alert("This book is already in your library.");
+    showToast("This book is already in your library.");
     return;
   }
 
@@ -271,7 +350,7 @@ function addBookToLibrary(book) {
 
   displayBooks();
 
-  alert(`"${book.title}" added to your library!`);
+  showToast(`${book.title} added to your library!`);
 
 }
 
@@ -380,39 +459,35 @@ JSON.parse(localStorage.getItem("communityReviews")) || [];
 
 function displayMyReviews(){
 
-const container =
-document.getElementById("myReviewsContainer");
+  const container =
+    document.getElementById("myReviewsContainer");
 
 
-if(!container) return;
+  if(!container) return;
 
 
-container.innerHTML = "";
+  container.innerHTML = "";
 
 
-myReviews.forEach(review => {
+  myReviews.forEach(review => {
 
+    container.innerHTML += `
 
-container.innerHTML += `
+      <div class="review-card">
 
-<div class="review-card">
+        <h3>${review.title}</h3>
 
-<h3>${review.title}</h3>
+        <p>${review.author}</p>
 
-<p>${review.author}</p>
+        <strong>${review.rating}/10 ⭐</strong>
 
-<strong>⭐ ${review.rating}/10</strong>
+        <p>${review.review}</p>
 
-<p>
-${review.review}
-</p>
+      </div>
 
-</div>
+    `;
 
-`;
-
-});
-
+  });
 
 }
 
@@ -449,14 +524,29 @@ container.innerHTML += `
 
 <div class="review-card">
 
-<h3>${review.title}</h3>
+  <h3>${review.title}</h3>
 
-<p>${review.author}</p>
+  <p>${review.author}</p>
 
-<strong>${review.rating}/10 ⭐</strong>
+  <strong>${review.rating}/10 ⭐</strong>
 
-<p>${review.review}</p>
+  <p>${review.review}</p>
 
+  <div class="review-buttons">
+
+    <button
+      class="edit-review-btn"
+      data-index="${communityReviews.indexOf(review)}">
+      Edit
+    </button>
+
+    <button
+      class="delete-review-btn"
+      data-index="${communityReviews.indexOf(review)}">
+      Delete
+    </button>
+
+  </div>
 
 </div>
 
@@ -464,11 +554,75 @@ container.innerHTML += `
 
 });
 
+document.querySelectorAll(".delete-review-btn").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    deleteReview(button.dataset.index);
+
+  });
+
+});
+
+document.querySelectorAll(".edit-review-btn").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    editReview(button.dataset.index);
+
+  });
+
+});
 
 }
 
 
+function deleteReview(index) {
 
+  communityReviews.splice(index, 1);
+
+  localStorage.setItem(
+    "communityReviews",
+    JSON.stringify(communityReviews)
+  );
+
+  displayCommunityReviews();
+
+  loadStats();
+
+}
+
+function editReview(index) {
+
+  const review = communityReviews[index];
+
+  const newRating = prompt(
+    "Update rating (0-10):",
+    review.rating
+  );
+
+  if (newRating === null) return;
+
+  const newReview = prompt(
+    "Update your review:",
+    review.review
+  );
+
+  if (newReview === null) return;
+
+  review.rating = Number(newRating);
+  review.review = newReview;
+
+  localStorage.setItem(
+    "communityReviews",
+    JSON.stringify(communityReviews)
+  );
+
+  displayCommunityReviews();
+
+  loadStats();
+
+}
 
 
 function setupReviewForm(){
@@ -534,6 +688,110 @@ form.reset();
 });
 
 }
+// ==========================================
+// Review Sorting
+// ==========================================
+
+function setupReviewSorting(){
+
+  const sortSelect = document.getElementById("reviewSort");
+
+  if(!sortSelect) return;
+
+
+  sortSelect.addEventListener("change", () => {
+
+    const option = sortSelect.value;
+
+
+    sortReviews(
+      "myReviewsContainer",
+      option
+    );
+
+
+    sortReviews(
+      "communityReviewsContainer",
+      option
+    );
+
+  });
+
+}
+
+
+
+function sortReviews(containerID, option){
+
+  const container = document.getElementById(containerID);
+
+  if(!container) return;
+
+
+  const cards = Array.from(
+    container.querySelectorAll(".review-card")
+  );
+
+
+  cards.sort((a,b)=>{
+
+
+    const titleA = a.querySelector("h3")
+      .textContent
+      .toLowerCase();
+
+
+    const titleB = b.querySelector("h3")
+      .textContent
+      .toLowerCase();
+
+
+
+    const ratingA = parseFloat(
+      a.querySelector("strong")
+      .textContent
+    );
+
+
+    const ratingB = parseFloat(
+      b.querySelector("strong")
+      .textContent
+    );
+
+
+
+    if(option === "highest"){
+      return ratingB - ratingA;
+    }
+
+
+    if(option === "lowest"){
+      return ratingA - ratingB;
+    }
+
+
+    if(option === "az"){
+      return titleA.localeCompare(titleB);
+    }
+
+
+    if(option === "za"){
+      return titleB.localeCompare(titleA);
+    }
+
+
+    return 0;
+
+  });
+
+
+
+  cards.forEach(card => {
+    container.appendChild(card);
+  });
+
+}
+
 // ==========================================
 // Reading Stats
 // ==========================================
