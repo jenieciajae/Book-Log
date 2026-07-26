@@ -37,7 +37,8 @@ Features include:
 - Mobile-friendly navigation
 
 
-## ow To Run
+## How To Run
+gh repo clone jenieciajae/Book-Log
 
 1. Clone this repository
 
