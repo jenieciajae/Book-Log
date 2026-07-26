@@ -98,7 +98,13 @@ Explore my personal reviews and share your own thoughts on books.
 
 
 <form id="reviewForm">
-
+	
+<input 
+type="text"
+id="reviewUsername"
+placeholder="Your name"
+required
+>
 
 <input 
 type="text"
@@ -153,16 +159,113 @@ Submit Review
 <section class="community-reviews">
 
 <h2>Community Reviews</h2>
+	
+<div class="review-search">
 
+  <input
+  type="text"
+  id="reviewSearch"
+  placeholder="Search reviews..."
+  >
+
+</div>
 
 <div id="communityReviewsContainer" class="reviews-grid"></div>
-
+	
+<button id="loadMoreReviews" class="form-btn">
+  Load More Reviews
+</button>
 
 </section>
 
 
 </div>
-	<script src="script.js"></script>
+	<script type="module" src="script.js"></script>
+	
+
+<!-- Delete Confirmation Modal -->
+
+<div id="deleteModal" class="modal-overlay">
+
+  <div class="custom-modal">
+
+    <h2>Delete Review?</h2>
+
+    <p>
+      Are you sure you want to permanently delete this review?
+    </p>
+
+    <div class="modal-buttons">
+
+      <button
+        id="cancelDelete"
+        class="edit-btn">
+        Cancel
+      </button>
+
+      <button
+        id="confirmDelete"
+        class="delete-btn">
+        Delete
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- Edit Review Modal -->
+
+<div id="editModal" class="modal-overlay">
+
+  <div class="custom-modal">
+
+    <h2>Edit Review</h2>
+
+    <label>
+      Rating
+    </label>
+
+    <input
+      type="number"
+      id="editRating"
+      min="0"
+      max="10"
+      step="0.1"
+    >
+
+
+    <label>
+      Review
+    </label>
+
+    <textarea
+      id="editText">
+    </textarea>
+
+
+    <div class="modal-buttons">
+
+      <button
+        id="cancelEdit"
+        class="edit-btn">
+        Cancel
+      </button>
+
+
+      <button
+        id="saveEdit"
+        class="delete-btn">
+        Save
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+	<script type="module" src="script.js"></script>
+<footer class="site-footer">
 	<footer class="site-footer">
   <div class="footer-container">
     <p>© 2026 Jeniecia's Book Log. All rights reserved.</p>

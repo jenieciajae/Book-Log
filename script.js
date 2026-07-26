@@ -2,7 +2,15 @@
 // Jeniecia's Book Log
 // Main JavaScript File
 // ==========================================
-
+import {
+  db,
+  collection,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  updateDoc,
+  doc
+} from "./firebase.js";
 document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Book Log Loaded");
@@ -23,6 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupReviewSorting();
 
+  setupReviewSearch();
+	
+  setupLoadMoreReviews();
+
 });
 // ==========================================
 // Global Variables
@@ -31,7 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const API_KEY = "AIzaSyBRkq3tklIGizMW6zd5OmSl3zgkk25xOhM";
 
 let books = JSON.parse(localStorage.getItem("books")) || [];
-
+let reviewToDelete = null;
+let reviewToEdit = null;
+let reviewsToShow = 6;
 
 // ==========================================
 // Toast Notifications
@@ -229,21 +243,21 @@ function displayBooks() {
   displayBookSection(
     books.filter(book => book.status === "reading"),
     reading,
-    "📖 Nothing here yet",
+    "ðŸ“– Nothing here yet",
     "Start reading a book to see it here."
   );
 
   displayBookSection(
     books.filter(book => book.status === "want"),
     want,
-    "📚 Your TBR is empty",
+    "ðŸ“š Your TBR is empty",
     "Search for books and add them to your library."
   );
 
   displayBookSection(
     books.filter(book => book.status === "finished"),
     finished,
-    "🎉 No finished books yet",
+    "ðŸŽ‰ No finished books yet",
     "Your completed books will appear here."
   );
 
@@ -413,6 +427,34 @@ function editBook(index) {
 // Reviews
 // ==========================================
 
+function setupLoadMoreReviews(){
+
+  const button =
+  document.getElementById("loadMoreReviews");
+
+
+  if(!button) return;
+
+
+  button.addEventListener("click", () => {
+
+
+    reviewsToShow += 6;
+
+
+    displayCommunityReviews();
+
+
+    if(reviewsToShow >= communityReviews.length){
+
+      button.style.display = "none";
+
+    }
+
+
+  });
+
+}
 
 const myReviews = [
 
@@ -452,8 +494,7 @@ review:
 
 
 
-let communityReviews =
-JSON.parse(localStorage.getItem("communityReviews")) || [];
+let communityReviews = [];
 
 
 
@@ -477,9 +518,11 @@ function displayMyReviews(){
 
         <h3>${review.title}</h3>
 
-        <p>${review.author}</p>
+        <p>Reviewed by: ${review.username}</p>
 
-        <strong>${review.rating}/10 ⭐</strong>
+	  	<p>${review.author}</p>
+
+        <strong>${review.rating}/10</strong>
 
         <p>${review.review}</p>
 
@@ -492,140 +535,207 @@ function displayMyReviews(){
 }
 
 
+function showEditModal(id) {
+
+  reviewToEdit = id;
 
 
-function displayCommunityReviews(){
-
-const container =
-document.getElementById("communityReviewsContainer");
-
-
-if(!container) return;
+  const review = communityReviews.find(
+    review => review.id === id
+  );
 
 
-container.innerHTML = "";
+  if(!review) return;
 
 
-if(communityReviews.length === 0){
+  document.getElementById("editRating").value =
+  review.rating;
 
-container.innerHTML =
-"<p>No community reviews yet. Be the first!</p>";
 
-return;
+  document.getElementById("editText").value =
+  review.review;
+
+
+  document
+  .getElementById("editModal")
+  .classList.add("show");
 
 }
 
+async function displayCommunityReviews(){
+
+  const container =
+  document.getElementById("communityReviewsContainer");
 
 
-communityReviews.forEach(review => {
+  if(!container) return;
 
 
-container.innerHTML += `
+  container.innerHTML = `
+    <p>Loading reviews...</p>
+  `;
 
-<div class="review-card">
 
-  <h3>${review.title}</h3>
+  communityReviews = [];
 
-  <p>${review.author}</p>
 
-  <strong>${review.rating}/10 ⭐</strong>
+  const querySnapshot = await getDocs(
+    collection(db, "communityReviews")
+  );
 
-  <p>${review.review}</p>
 
-  <div class="review-buttons">
+  querySnapshot.forEach((doc) => {
 
-    <button
-      class="edit-review-btn"
-      data-index="${communityReviews.indexOf(review)}">
-      Edit
-    </button>
-
-    <button
-      class="delete-review-btn"
-      data-index="${communityReviews.indexOf(review)}">
-      Delete
-    </button>
-
-  </div>
-
-</div>
-
-`;
-
-});
-
-document.querySelectorAll(".delete-review-btn").forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    deleteReview(button.dataset.index);
+    communityReviews.push({
+      id: doc.id,
+      ...doc.data()
+    });
 
   });
 
-});
 
-document.querySelectorAll(".edit-review-btn").forEach(button => {
+  container.innerHTML = "";
 
-  button.addEventListener("click", () => {
 
-    editReview(button.dataset.index);
+  if(communityReviews.length === 0){
+
+    container.innerHTML =
+    "<p>No community reviews yet. Be the first!</p>";
+
+    return;
+
+  }
+
+
+  communityReviews
+	.slice(0, reviewsToShow)
+	.forEach(review => {
+
+    const currentUser =
+    localStorage.getItem("username");
+
+
+    container.innerHTML += `
+
+      <div class="review-card">
+
+        <h3>${review.title}</h3>
+
+        <p>
+        <strong>Reviewed by:</strong> 
+        ${review.username}
+        </p>
+
+        <p>${review.author}</p>
+
+        <strong>
+        ${review.rating}/10 ⭐
+        </strong>
+
+        <p>${review.review}</p>
+
+
+        <button
+        class="helpful-btn"
+        data-id="${review.id}">
+        ❤️ Helpful (${review.helpful || 0})
+        </button>
+
+
+        ${review.username === currentUser ? `
+
+        <div class="review-buttons">
+
+          <button
+          class="edit-review-btn"
+          data-id="${review.id}">
+          Edit
+          </button>
+
+
+          <button
+          class="delete-review-btn"
+          data-id="${review.id}">
+          Delete
+          </button>
+
+        </div>
+
+        ` : ""}
+
+
+      </div>
+
+    `;
 
   });
 
-});
+
+  document.querySelectorAll(".delete-review-btn")
+  .forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      showDeleteModal(button.dataset.id);
+
+    });
+
+  });
+
+
+  document.querySelectorAll(".edit-review-btn")
+  .forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      showEditModal(button.dataset.id);
+
+    });
+
+  });
+
+
+  document.querySelectorAll(".helpful-btn")
+  .forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      addHelpful(button.dataset.id);
+
+    });
+
+  });
 
 }
 
 
-function deleteReview(index) {
 
-  communityReviews.splice(index, 1);
+async function addHelpful(id){
 
-  localStorage.setItem(
-    "communityReviews",
-    JSON.stringify(communityReviews)
+  const review = communityReviews.find(
+    review => review.id === id
   );
+
+
+  if(!review) return;
+
+
+  await updateDoc(
+    doc(db, "communityReviews", id),
+    {
+      helpful: (review.helpful || 0) + 1
+    }
+  );
+
+
+  showToast("Marked as helpful! ❤️");
+
 
   displayCommunityReviews();
 
-  loadStats();
-
 }
 
-function editReview(index) {
-
-  const review = communityReviews[index];
-
-  const newRating = prompt(
-    "Update rating (0-10):",
-    review.rating
-  );
-
-  if (newRating === null) return;
-
-  const newReview = prompt(
-    "Update your review:",
-    review.review
-  );
-
-  if (newReview === null) return;
-
-  review.rating = Number(newRating);
-  review.review = newReview;
-
-  localStorage.setItem(
-    "communityReviews",
-    JSON.stringify(communityReviews)
-  );
-
-  displayCommunityReviews();
-
-  loadStats();
-
-}
-
-
-function setupReviewForm(){
+async function setupReviewForm(){
 
 
 const form =
@@ -636,7 +746,7 @@ if(!form) return;
 
 
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", async function(e){
 
 
 e.preventDefault();
@@ -645,37 +755,40 @@ e.preventDefault();
 
 const newReview = {
 
+  username:
+  document.getElementById("reviewUsername").value,
 
-title:
-document.getElementById("reviewTitle").value,
+  title:
+  document.getElementById("reviewTitle").value,
 
+  author:
+  document.getElementById("reviewAuthor").value,
 
-author:
-document.getElementById("reviewAuthor").value,
+  rating:
+  Number(document.getElementById("reviewRating").value),
 
+  review:
+  document.getElementById("reviewText").value,
 
-rating:
-Number(document.getElementById("reviewRating").value),
-
-
-review:
-document.getElementById("reviewText").value
-
+  helpful: 0
 
 };
 
-
-
-communityReviews.push(newReview);
-
-
-
+// Remember this user on this browser
 localStorage.setItem(
-"communityReviews",
-JSON.stringify(communityReviews)
+  "username",
+  newReview.username
+);
+
+// Save review to Firebase
+await addDoc(
+  collection(db, "communityReviews"),
+  newReview
 );
 
 
+
+// Reload reviews
 
 displayCommunityReviews();
 
@@ -684,14 +797,110 @@ displayCommunityReviews();
 form.reset();
 
 
+showToast("Review submitted! 🎉");
+
 
 });
+
 
 }
 // ==========================================
 // Review Sorting
 // ==========================================
+function setupReviewSearch(){
 
+  const search =
+  document.getElementById("reviewSearch");
+
+
+  if(!search) return;
+
+
+  search.addEventListener("input", () => {
+
+    const value =
+    search.value.toLowerCase();
+
+
+    const filtered =
+    communityReviews.filter(review => {
+
+
+      return (
+
+  		(review.title || "").toLowerCase().includes(value) ||
+
+  		(review.author || "").toLowerCase().includes(value) ||
+
+  		(review.username || "").toLowerCase().includes(value)
+
+	);
+
+
+    });
+
+
+    displayFilteredReviews(filtered);
+
+
+  });
+
+}
+function displayFilteredReviews(reviews){
+
+  const container =
+  document.getElementById("communityReviewsContainer");
+
+
+  container.innerHTML = "";
+
+
+  if(reviews.length === 0){
+
+    container.innerHTML =
+    "<p>No reviews found.</p>";
+
+    return;
+
+  }
+
+
+  reviews.forEach(review => {
+
+    container.innerHTML += `
+
+    <div class="review-card">
+
+      <h3>${review.title}</h3>
+
+      <p>
+      <strong>Reviewed by:</strong>
+      ${review.username}
+      </p>
+
+      <p>${review.author}</p>
+
+      <strong>
+      ${review.rating}/10 ⭐
+      </strong>
+
+      <p>${review.review}</p>
+
+
+      <button
+      class="helpful-btn"
+      data-id="${review.id}">
+      ❤️ Helpful (${review.helpful || 0})
+      </button>
+
+
+    </div>
+
+    `;
+
+  });
+
+}
 function setupReviewSorting(){
 
   const sortSelect = document.getElementById("reviewSort");

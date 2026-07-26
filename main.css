@@ -805,6 +805,32 @@ background:#F7D8E6;
 
 }
 
+.modal-overlay{
+
+display:none;
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.55);
+
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+
+}
+
+.modal-overlay.show{
+
+display:flex;
+
+}
+
 
 /* Mobile */
 
@@ -1121,6 +1147,272 @@ background:#F7D8E6;
   background:#E27A86;
   transform:translateY(-2px);
 }
+.custom-modal input,
+.custom-modal textarea {
+
+  width:100%;
+
+  padding:12px;
+
+  margin:10px 0 20px;
+
+  border:1px solid #ddd;
+
+  border-radius:12px;
+
+  font-family:"Poppins", sans-serif;
+
+}
+
+
+.custom-modal textarea {
+
+  min-height:120px;
+
+  resize:none;
+
+}
+
+
+.custom-modal label {
+
+  display:block;
+
+  text-align:left;
+
+  font-weight:600;
+
+  color:#174d2c;
+
+}
+
+/* ==========================
+   Delete Confirmation Modal
+========================== */
+
+.modal-overlay {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(23, 77, 44, 0.35);
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+
+}
+
+
+.modal-overlay.show {
+
+  display: flex;
+
+}
+
+#loadMoreReviews {
+
+  display:block;
+
+  margin:30px auto;
+
+}
+
+/* Modal Box */
+
+.custom-modal {
+
+  background: #fff;
+
+  width: 90%;
+  max-width: 420px;
+
+  padding: 35px;
+
+  border-radius: 25px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+
+  animation: modalPop .25s ease;
+
+}
+
+
+.custom-modal h2 {
+
+  font-family: "Lugrasimo", cursive;
+
+  color: #174d2c;
+
+  margin-bottom: 15px;
+
+}
+
+
+.custom-modal p {
+
+  font-family: "Poppins", sans-serif;
+
+  color: #555;
+
+  margin-bottom: 25px;
+
+}
+
+.review-search {
+
+  margin:20px 0;
+
+}
+
+
+.review-search input {
+
+  width:100%;
+
+  max-width:400px;
+
+  padding:12px 15px;
+
+  border-radius:20px;
+
+  border:1px solid #ddd;
+
+  font-family:"Poppins", sans-serif;
+
+}
+
+.helpful-btn {
+
+  margin-top:15px;
+
+  background:#174d2c;
+
+  color:white;
+
+  border:none;
+
+  padding:10px 18px;
+
+  border-radius:25px;
+
+  font-family:"Poppins", sans-serif;
+
+  cursor:pointer;
+
+  transition:.3s ease;
+
+}
+
+
+.helpful-btn:hover {
+
+  background:#ea9ba1;
+
+  transform:translateY(-2px);
+
+}
+/* Buttons */
+
+.modal-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 15px;
+
+}
+
+
+.modal-buttons button {
+
+  border: none;
+
+  padding: 12px 25px;
+
+  border-radius: 30px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s ease;
+
+}
+
+
+/* Cancel */
+
+#cancelDelete {
+
+  background: #eee;
+
+  color: #333;
+
+}
+
+
+#cancelDelete:hover {
+
+  background: #ddd;
+
+}
+
+
+/* Delete */
+
+#confirmDelete {
+
+  background: #ea9ba1;
+
+  color: white;
+
+}
+
+
+#confirmDelete:hover {
+
+  transform: translateY(-2px);
+
+  opacity: .85;
+
+}
+
+
+/* Animation */
+
+@keyframes modalPop {
+
+  from {
+
+    transform: scale(.85);
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    transform: scale(1);
+
+    opacity: 1;
+
+  }
+
+}
 /* Toast Notification */
 
 .toast{
@@ -1359,13 +1651,19 @@ background:#F7D8E6;
 /* Mobile   */
 @media (max-width: 768px) {
 /* GENERAL */
+	html,
+	body {
+  overflow-x: hidden;
+	}
   body {
     font-size: 16px;
     padding: 0;
   }
 
   .container {
-    padding: 15px;
+    width: 100%;
+  max-width: 100%;
+  padding: 15px;
   }
 
   /* NAV */
@@ -1406,9 +1704,9 @@ background:#F7D8E6;
 	
   /* BOOK GRID */
   .book-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:12px;
   }
 
   .book-flex {
@@ -1448,7 +1746,9 @@ background:#F7D8E6;
 	.book-card {
 
   width:100%;
+  max-width:100%;
   min-height:250px;
+  overflow:hidden;
 
 }
 
@@ -1485,10 +1785,25 @@ background:#F7D8E6;
 
 }
 
+.goal-section {
 
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+
+}
 .review-card {
 
   width:100%;
+
+}
+	img,
+button,
+input,
+textarea,
+select {
+
+  max-width:100%;
 
 }
   /* Footer adjustments */
