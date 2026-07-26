@@ -38,9 +38,8 @@ Features include:
 
 
 ## How To Run
-gh repo clone jenieciajae/Book-Log
 
 1. Clone this repository
 
 ```bash
-git clone YOUR_REPOSITORY_LINK
+gh repo clone jenieciajae/Book-Log
