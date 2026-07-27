@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setupReviewSearch();
 	
   setupLoadMoreReviews();
+	
+  setupReviewModals();
 
 });
 // ==========================================
@@ -243,21 +245,21 @@ function displayBooks() {
   displayBookSection(
     books.filter(book => book.status === "reading"),
     reading,
-    "ðŸ“– Nothing here yet",
+    "&#128214; Nothing here yet",
     "Start reading a book to see it here."
   );
 
   displayBookSection(
     books.filter(book => book.status === "want"),
     want,
-    "ðŸ“š Your TBR is empty",
+    "&#128218; Your TBR is empty",
     "Search for books and add them to your library."
   );
 
   displayBookSection(
     books.filter(book => book.status === "finished"),
     finished,
-    "ðŸŽ‰ No finished books yet",
+    "&#127881; No finished books yet",
     "Your completed books will appear here."
   );
 
@@ -427,6 +429,177 @@ function editBook(index) {
 // Reviews
 // ==========================================
 
+async function deleteReview(id) {
+
+  if(!id) return;
+
+
+  await deleteDoc(
+    doc(db, "communityReviews", id)
+  );
+
+
+  showToast("Review deleted!");
+
+
+  displayCommunityReviews();
+
+  loadStats();
+
+}
+
+function showDeleteModal(id) {
+
+  reviewToDelete = id;
+
+  const modal =
+  document.getElementById("deleteModal");
+
+  if(modal){
+    modal.classList.add("show");
+  }
+
+}
+
+
+function hideDeleteModal(){
+
+  const modal =
+  document.getElementById("deleteModal");
+
+  if(modal){
+    modal.classList.remove("show");
+  }
+
+}
+
+
+function showEditModal(id){
+
+  reviewToEdit = id;
+
+
+  const review = communityReviews.find(
+    review => review.id === id
+  );
+
+
+  if(!review) return;
+
+
+  document.getElementById("editRating").value =
+  review.rating;
+
+
+  document.getElementById("editText").value =
+  review.review;
+
+
+  document
+  .getElementById("editModal")
+  .classList.add("show");
+
+}
+
+
+function hideEditModal(){
+
+  const modal =
+  document.getElementById("editModal");
+
+  if(modal){
+    modal.classList.remove("show");
+  }
+
+}
+
+function setupReviewModals(){
+
+  const cancelDelete =
+  document.getElementById("cancelDelete");
+
+  const confirmDelete =
+  document.getElementById("confirmDelete");
+
+  const cancelEdit =
+  document.getElementById("cancelEdit");
+
+  const saveEdit =
+  document.getElementById("saveEdit");
+
+
+  if(cancelDelete){
+
+    cancelDelete.addEventListener("click", () => {
+
+      hideDeleteModal();
+
+    });
+
+  }
+
+
+  if(confirmDelete){
+
+    confirmDelete.addEventListener("click", () => {
+
+      deleteReview(reviewToDelete);
+
+      hideDeleteModal();
+
+    });
+
+  }
+
+
+  if(cancelEdit){
+
+    cancelEdit.addEventListener("click", () => {
+
+      hideEditModal();
+
+    });
+
+  }
+
+
+  if(saveEdit){
+
+    saveEdit.addEventListener("click", async () => {
+
+
+      const rating =
+      document.getElementById("editRating").value;
+
+
+      const text =
+      document.getElementById("editText").value;
+
+
+      await updateDoc(
+        doc(db, "communityReviews", reviewToEdit),
+        {
+          rating: Number(rating),
+          review: text
+        }
+      );
+
+
+      hideEditModal();
+
+      showToast("Review updated! ✏️");
+
+      displayCommunityReviews();
+
+      loadStats();
+
+
+    });
+
+  }
+
+}
+
 function setupLoadMoreReviews(){
 
   const button =
@@ -461,6 +634,7 @@ const myReviews = [
 {
 title: "Men Who Hate Women",
 author: "Laura Bates",
+username: "Jeniecia Williams",
 rating: 9,
 review:
 "A powerful and eye-opening look into online misogyny and how digital communities can influence real-world harm."
@@ -469,6 +643,7 @@ review:
 {
 title: "Book Lovers",
 author: "Emily Henry",
+username: "Jeniecia Williams",
 rating: 8.6,
 review:
 "Truly a book for book lovers about book lovers. One of my favorite romance books so far, just such a cute book! "
@@ -477,6 +652,7 @@ review:
 {
 title: "The Bell Jar",
 author: "Sylvia Plath",
+username: "Jeniecia Williams",
 rating: 9,
 review:
 "A beautifully written exploration of identity, expectations, and the complicated experience of mental health."
@@ -485,6 +661,7 @@ review:
 {
 title: "The Metamorphosis",
 author: "Franz Kafka",
+username: "Jeniecia Williams",
 rating: 9.5,
 review:
 "A great story about identity and the pressure of being successful. Kafka demonstrates what happens when a person is reduced to what they can offer instead of who they are."
@@ -535,32 +712,6 @@ function displayMyReviews(){
 }
 
 
-function showEditModal(id) {
-
-  reviewToEdit = id;
-
-
-  const review = communityReviews.find(
-    review => review.id === id
-  );
-
-
-  if(!review) return;
-
-
-  document.getElementById("editRating").value =
-  review.rating;
-
-
-  document.getElementById("editText").value =
-  review.review;
-
-
-  document
-  .getElementById("editModal")
-  .classList.add("show");
-
-}
 
 async function displayCommunityReviews(){
 
