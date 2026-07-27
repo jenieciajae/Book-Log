@@ -10,7 +10,7 @@ import {
   deleteDoc,
   updateDoc,
   doc
-} from "./firebase.js";
+} from "./firebaseConfig.js";
 document.addEventListener("DOMContentLoaded", () => {
 
   console.log("Book Log Loaded");
