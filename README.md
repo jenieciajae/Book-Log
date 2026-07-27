@@ -1,6 +1,8 @@
-# Jeniecia's Book Log
+# Jeniecia's Book Log 
 
-A personal digital reading companion designed to help readers discover books, organize their library, track reading progress, and share reviews.
+🌐 **Live Demo:** https://jeniecia-book-log.web.app
+
+A responsive book tracking app built with HTML, CSS, JavaScript, and Firebase.
 
 ## Features
 
